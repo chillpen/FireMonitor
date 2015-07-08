@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xml:lang="zh"><Esri><CreaDate>20150128</CreaDate><CreaTime>14302000</CreaTime><ArcGISFormat>1.0</ArcGISFormat><SyncOnce>TRUE</SyncOnce><DataProperties><lineage><Process ToolSource="C:\Program Files (x86)\ArcGIS\Engine10.0\ArcToolbox\Toolboxes\Data Management Tools.tbx\CreateFishnet" Date="20150128" Time="143020">CreateFishnet E:\GIS\数据引用\基础矢量\经纬网格\经纬网5度.shp "-180 -90" "-180 -80" 5 5 36 72 # NO_LABELS 经纬网格5度 POLYGON</Process></lineage></DataProperties></Esri></metadata>

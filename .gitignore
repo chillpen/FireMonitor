@@ -229,3 +229,15 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+# project
+gdal/
+
+*.dbf
+*.prj
+*.sbn
+*.sbx
+*.shp
+*.shx
+*.png
+*.mcd

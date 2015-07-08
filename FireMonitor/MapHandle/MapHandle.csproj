@@ -1,0 +1,2215 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{67264858-0382-4E3A-9585-423AC0F5CB0F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MapHandle</RootNamespace>
+    <AssemblyName>MapHandle</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <OutputPath>..\bin\Debug\PPASoft\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <PlatformTarget>x64</PlatformTarget>
+    <OutputPath>..\bin\Release\PPASoft\</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BruTile, Version=0.6.4.0, Culture=neutral, PublicKeyToken=00e75fd79e391f40, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Components\DLL\RSMap\BruTile.dll</HintPath>
+    </Reference>
+    <Reference Include="BruTile.Desktop">
+      <HintPath>..\Components\DLL\RSMap\BruTile.Desktop.dll</HintPath>
+    </Reference>
+    <Reference Include="Common.Logging, Version=2.0.0.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Components\DLL\RSMap\Common.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Component, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Components\DLL\RSMap\Component.dll</HintPath>
+    </Reference>
+    <Reference Include="FreeImageNET, Version=3.11.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Components\DLL\RSMap\FreeImageNET.dll</HintPath>
+    </Reference>
+    <Reference Include="gdal_csharp, Version=1.0.4704.32537, Culture=neutral, PublicKeyToken=db5a52b08dc5b321, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Components\DLL\RSMap\gdal_csharp.dll</HintPath>
+    </Reference>
+    <Reference Include="GeoAPI, Version=1.6.4448.22541, Culture=neutral, PublicKeyToken=a1a0da7def465678, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Components\DLL\RSMap\GeoAPI.dll</HintPath>
+    </Reference>
+    <Reference Include="HDF5DotNet, Version=1.8.9.0, Culture=neutral, PublicKeyToken=a4952c8df86d6e8c, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Components\DLL\RSMap\HDF5DotNet.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data">
+      <HintPath>..\Components\DLL\RSMap\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="NetTopologySuite, Version=1.12.4448.22555, Culture=neutral, PublicKeyToken=f580a05016ebada1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Components\DLL\RSMap\NetTopologySuite.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\Components\DLL\RSMap\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="ogr_csharp, Version=1.0.4704.32537, Culture=neutral, PublicKeyToken=db5a52b08dc5b321, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Components\DLL\RSMap\ogr_csharp.dll</HintPath>
+    </Reference>
+    <Reference Include="osr_csharp, Version=1.0.4704.32536, Culture=neutral, PublicKeyToken=db5a52b08dc5b321, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Components\DLL\RSMap\osr_csharp.dll</HintPath>
+    </Reference>
+    <Reference Include="PowerCollections">
+      <HintPath>..\Components\DLL\RSMap\PowerCollections.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="Proj4App, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Components\DLL\RSMap\Proj4App.dll</HintPath>
+    </Reference>
+    <Reference Include="ProjAPI, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Components\DLL\RSMap\ProjAPI.dll</HintPath>
+    </Reference>
+    <Reference Include="ProjNet, Version=1.2.3882.19088, Culture=neutral, PublicKeyToken=a1f5bdcd9c6f5740, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Components\DLL\RSMap\ProjNet.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpMap, Version=1.0.5301.24753, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Components\DLL\RSMap\SharpMap.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpMap.Extensions, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Components\DLL\RSMap\SharpMap.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpMap.UI, Version=1.0.5301.24754, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Components\DLL\RSMap\SharpMap.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="SkinForm">
+      <HintPath>..\Components\DLL\RSMap\SkinForm.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WeifenLuo.WinFormsUI.Docking">
+      <HintPath>..\Components\DLL\RSMap\WeifenLuo.WinFormsUI.Docking.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="WindowsFormsIntegration" />
+    <Reference Include="XPTable">
+      <HintPath>..\Components\DLL\RSMap\XPTable.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="config.cs" />
+    <Compile Include="DefaultData.cs" />
+    <Compile Include="DefaultPalette.cs" />
+    <Compile Include="ImageGDILayer.cs" />
+    <Compile Include="IDataProvider.cs" />
+    <Compile Include="ImageLayer.cs" />
+    <Compile Include="IPalette.cs" />
+    <Compile Include="PointsBuilder\RandomPointsBuilder.cs" />
+    <Compile Include="Projection.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="MapControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MapControl.Designer.cs">
+      <DependentUpon>MapControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MainControl.Designer.cs">
+      <DependentUpon>MainControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Selection\DisplayModel.cs" />
+    <Compile Include="Selection\DispSelectRect.cs" />
+    <Compile Include="Selection\ISelectRegion.cs" />
+    <Compile Include="Selection\SelectImageData.cs" />
+    <Compile Include="Selection\SelectPoint.cs" />
+    <Compile Include="Selection\SelectRect.cs" />
+    <Compile Include="Selection\SelectShp.cs" />
+    <Compile Include="SHPLayer.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="MapControl.resx">
+      <DependentUpon>MapControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainControl.resx">
+      <DependentUpon>MainControl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="gdal\data\compdcs.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\data\coordinate_axis.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\data\cubewerx_extra.wkt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\data\datum_shift.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\data\ecw_cs.wkt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\data\ellipsoid.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\data\epsg.wkt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\data\esri_extra.wkt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\data\esri_StatePlane_extra.wkt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\data\esri_Wisconsin_extra.wkt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\data\gcs.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\data\gcs.override.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\data\gdal_datum.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\data\geoccs.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\data\gt_datum.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\data\gt_ellips.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\data\header.dxf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\data\nitf_spec.xsd">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\data\pcs.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\data\pcs.override.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\data\prime_meridian.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\data\projop_wparm.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\data\s57agencies.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\data\s57attributes.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\data\s57attributes_aml.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\data\s57attributes_iw.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\data\s57expectedinput.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\data\s57objectclasses.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\data\s57objectclasses_aml.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\data\s57objectclasses_iw.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\data\seed_2d.dgn">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\data\seed_3d.dgn">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\data\stateplane.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\data\trailer.dxf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\data\unit_of_measure.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\data\vertcs.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\data\vertcs.override.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\share\esri.extra">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\share\ntf_r93.gsb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\share\ntv1_can.dat">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\share\nzgd2kgrid0005.gsb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\share\other.extra">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\share\proj_def.dat">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\shp\latlon_5度.shp.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\shp\stereo-2.shp.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\shp\test-Robinson.shp.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\产品矢量\蓝藻水华产品\太湖\太湖分区_12区.shp.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\产品矢量\蓝藻水华产品\巢湖\巢湖分区.shp.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\产品矢量\蓝藻水华产品\滇池\滇池分区.shp.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\关注区域\海冰关注区\渤海湾分区.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\关注区域\重点水域\巢湖水体边界.shp.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\关注区域\重点水域\滇池水体边界.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\地理信息图标\star.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\地理信息图标\乡镇.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\地理信息图标\修理厂.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\地理信息图标\停车场.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\地理信息图标\公园.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\地理信息图标\出口.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\地理信息图标\剧院.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\地理信息图标\加油站.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\地理信息图标\医院.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\地理信息图标\博物馆.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\地理信息图标\县级市.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\地理信息图标\咖啡屋.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\地理信息图标\国家首府.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\地理信息图标\国家首府2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\地理信息图标\国家首府3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\地理信息图标\国家首府4.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\地理信息图标\国家首府5.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\地理信息图标\国家首府6.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\地理信息图标\国家首府7.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\地理信息图标\国家首府8.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\地理信息图标\地铁站.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\地理信息图标\城市标.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\地理信息图标\城市标2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\地理信息图标\城市标3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\地理信息图标\大楼.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\地理信息图标\大院.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\地理信息图标\学院.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\地理信息图标\山.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\地理信息图标\建筑.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\地理信息图标\村庄.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\地理信息图标\洗衣店.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\地理信息图标\烟酒店.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\地理信息图标\物理所.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\地理信息图标\社区居委会.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\地理信息图标\红五星.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\地理信息图标\红绿灯.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\地理信息图标\购物.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\地理信息图标\邮政.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\地理信息图标\银行.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\地理信息图标\长途车站.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\地理信息图标\餐馆.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\地理信息图标\饭店.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\河流湖泊\中国\中国河流.shp.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\河流湖泊\中国\中国湖泊%28线%29.shp.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\河流湖泊\中国\中国湖泊.shp.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\河流湖泊\全球\全球河流_线.shp.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\河流湖泊\全球\全球湖泊%28线%29.shp.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\河流湖泊\全球\全球湖泊_面.shp.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\矢量模版\土地利用类型_合并.shp.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\经纬网格\经纬网5度.shp.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\点\中国县市_点.shp.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\点\中国地级市_点.shp.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\点\中国省会.shp.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\点\中国首府_PT.shp.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\线\中国海岸线.shp.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\线\中国行政区_线.shp.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\线\中国边界_线.shp.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\线\县级行政区域_线.shp.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\线\国家_线.shp.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\线\大洲_线.shp.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\线\市级行政区域_线.shp.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\线\省级行政区域_线.shp.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\面\中国行政区.shp.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\面\中国边界.shp.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\面\内蒙古盟市边界 .xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\面\国家.shp.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\面\大洲.shp.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="gdal\data\gdalicon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\data\GDALLogoBW.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\data\GDALLogoColor.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\data\GDALLogoGS.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\data\nitf_spec.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\data\pci_datum.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\data\pci_ellips.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\share\nad.lst">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\x64\freexl.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\x64\gdal19.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\x64\gdalconst_wrap.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\x64\gdal_fw.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\x64\gdal_translate.exe">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\x64\gdal_wrap.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\x64\geos_c.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\x64\iconv.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\x64\libcurl.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\x64\libeay32.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\x64\libexpat.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\x64\libmysql.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\x64\libpq.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\x64\msvcp100.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\x64\msvcr100.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\x64\ogr_wrap.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\x64\openjpeg.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\x64\osr_wrap.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\x64\proj.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\x64\spatialite.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\x64\ssleay32.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\x64\xerces-c_2_8.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\x64\zlib1.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\x86\adrg.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\x86\bgd.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\x86\dtcanada.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\x86\dted.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\x86\dtusa.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\x86\gdalconst_wrap.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\x86\gdal_fw.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\x86\gdal_translate.exe">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\x86\gdal_wrap.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\x86\gdk-1.3.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\x86\geos_fw.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\x86\geotiff_fw.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\x86\glib-1.3.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\x86\gmodule-1.3.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\x86\gnu-intl.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\x86\gthread-1.3.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\x86\gtk-1.3.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\x86\gtkextra-0.99.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\x86\gtkglarea.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\x86\hdf5dll.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\x86\hdf_fw.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\x86\iconv.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\x86\jpeg12_osgeo.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\x86\jpeg_osgeo.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\x86\libcurl.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\x86\libeay32.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\x86\libexpat.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\x86\libfcgi.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\x86\libmap.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\x86\libmysql.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\x86\libpq.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\x86\libtiff_fw.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\x86\libxml2.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\x86\lodbc.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\x86\lti_dsdk_cdll.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\x86\lti_dsdk_dll.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\x86\mapscript.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\x86\mfhdf_fw.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\x86\msvcp60.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\x86\msvcp70.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\x86\msvcp71.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\x86\msvcr71.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\x86\msvcrt.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\x86\NCScnet_fw.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\x86\NCSEcwC_fw.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\x86\NCSEcw_fw.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\x86\NCSUtil_fw.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\x86\netcdf.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\x86\ogdi_32b1.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\x86\ogr_wrap.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\x86\osr_wrap.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\x86\proj.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\x86\pthread.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\x86\python23.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\x86\remote.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\x86\rpf.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\x86\skeleton.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\x86\sqlite3.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\x86\ssleay32.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\x86\szlibdll.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\x86\vrf.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\x86\xerces-c_2_7.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\x86\xerces-depdom_2_7.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\x86\zlib1.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\x86\zlib_fw.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gdal\x86\zlib_osgeo.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="数据引用\shp\latlon_5度.dbf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\shp\latlon_5度.prj">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\shp\latlon_5度.sbn">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\shp\latlon_5度.sbx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\shp\latlon_5度.shp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\shp\latlon_5度.shx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\shp\stereo-2.dbf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\shp\stereo-2.prj">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\shp\stereo-2.sbn">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\shp\stereo-2.sbx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\shp\stereo-2.shp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\shp\stereo-2.shx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\shp\test-Robinson.dbf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\shp\test-Robinson.prj">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\shp\test-Robinson.sbn">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\shp\test-Robinson.sbx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\shp\test-Robinson.shp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\shp\test-Robinson.shx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\产品矢量\沙尘产品\hyd1_4l.dbf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\产品矢量\沙尘产品\hyd1_4l.prj">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\产品矢量\沙尘产品\hyd1_4l.shp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\产品矢量\沙尘产品\hyd1_4l.shx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\产品矢量\沙尘产品\MAP_HC%28gbal%29.dbf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\产品矢量\沙尘产品\MAP_HC%28gbal%29.prj">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\产品矢量\沙尘产品\MAP_HC%28gbal%29.shp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\产品矢量\沙尘产品\MAP_HC%28gbal%29.shx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\产品矢量\沙尘产品\MAP_HC.dbf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\产品矢量\沙尘产品\MAP_HC.prj">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\产品矢量\沙尘产品\MAP_HC.sbn">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\产品矢量\沙尘产品\MAP_HC.sbx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\产品矢量\沙尘产品\MAP_HC.shp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\产品矢量\沙尘产品\MAP_HC.shx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\产品矢量\沙尘产品\MAP_HC2%28gbal%29.dbf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\产品矢量\沙尘产品\MAP_HC2%28gbal%29.prj">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\产品矢量\沙尘产品\MAP_HC2%28gbal%29.shp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\产品矢量\沙尘产品\MAP_HC2%28gbal%29.shx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\产品矢量\沙尘产品\MAP_HC2.dbf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\产品矢量\沙尘产品\MAP_HC2.prj">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\产品矢量\沙尘产品\MAP_HC2.sbn">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\产品矢量\沙尘产品\MAP_HC2.sbx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\产品矢量\沙尘产品\MAP_HC2.shp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\产品矢量\沙尘产品\MAP_HC2.shx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\产品矢量\沙尘产品\MAP_HP%28gbal%29.dbf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\产品矢量\沙尘产品\MAP_HP%28gbal%29.prj">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\产品矢量\沙尘产品\MAP_HP%28gbal%29.shp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\产品矢量\沙尘产品\MAP_HP%28gbal%29.shx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\产品矢量\沙尘产品\MAP_HP.dbf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\产品矢量\沙尘产品\MAP_HP.prj">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\产品矢量\沙尘产品\MAP_HP.sbn">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\产品矢量\沙尘产品\MAP_HP.sbx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\产品矢量\沙尘产品\MAP_HP.shp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\产品矢量\沙尘产品\MAP_HP.shx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\产品矢量\沙尘产品\公路.dbf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\产品矢量\沙尘产品\公路.prj">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\产品矢量\沙尘产品\公路.shp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\产品矢量\沙尘产品\公路.shx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\产品矢量\沙尘产品\国界.dbf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\产品矢量\沙尘产品\国界.prj">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\产品矢量\沙尘产品\国界.shp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\产品矢量\沙尘产品\国界.shx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\产品矢量\沙尘产品\国界land.dbf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\产品矢量\沙尘产品\国界land.prj">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\产品矢量\沙尘产品\国界land.shp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\产品矢量\沙尘产品\国界land.shx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\产品矢量\沙尘产品\未定国界.dbf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\产品矢量\沙尘产品\未定国界.prj">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\产品矢量\沙尘产品\未定国界.shp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\产品矢量\沙尘产品\未定国界.shx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\产品矢量\沙尘产品\机场.dbf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\产品矢量\沙尘产品\机场.prj">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\产品矢量\沙尘产品\机场.shp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\产品矢量\沙尘产品\机场.shx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\产品矢量\沙尘产品\海岸线.dbf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\产品矢量\沙尘产品\海岸线.prj">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\产品矢量\沙尘产品\海岸线.shp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\产品矢量\沙尘产品\海岸线.shx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\产品矢量\沙尘产品\省会.dbf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\产品矢量\沙尘产品\省会.prj">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\产品矢量\沙尘产品\省会.shp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\产品矢量\沙尘产品\省会.shx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\产品矢量\沙尘产品\省界.dbf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\产品矢量\沙尘产品\省界.prj">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\产品矢量\沙尘产品\省界.shp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\产品矢量\沙尘产品\省界.shx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\产品矢量\沙尘产品\铁路.dbf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\产品矢量\沙尘产品\铁路.prj">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\产品矢量\沙尘产品\铁路.shp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\产品矢量\沙尘产品\铁路.shx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\产品矢量\沙尘产品\高速公路.dbf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\产品矢量\沙尘产品\高速公路.prj">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\产品矢量\沙尘产品\高速公路.shp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\产品矢量\沙尘产品\高速公路.shx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\产品矢量\海冰产品\井架.dbf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\产品矢量\海冰产品\井架.info">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\产品矢量\海冰产品\井架.prj">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\产品矢量\海冰产品\井架.sbn">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\产品矢量\海冰产品\井架.sbx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\产品矢量\海冰产品\井架.shp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\产品矢量\海冰产品\井架.shx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\产品矢量\蓝藻水华产品\太湖\太湖分区_12区.dbf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\产品矢量\蓝藻水华产品\太湖\太湖分区_12区.prj">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\产品矢量\蓝藻水华产品\太湖\太湖分区_12区.sbn">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\产品矢量\蓝藻水华产品\太湖\太湖分区_12区.sbx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\产品矢量\蓝藻水华产品\太湖\太湖分区_12区.shp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\产品矢量\蓝藻水华产品\太湖\太湖分区_12区.shx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\产品矢量\蓝藻水华产品\太湖\太湖分区_12区.sidx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\产品矢量\蓝藻水华产品\太湖\太湖无水草边界.dbf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\产品矢量\蓝藻水华产品\太湖\太湖无水草边界.prj">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\产品矢量\蓝藻水华产品\太湖\太湖无水草边界.sbn">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\产品矢量\蓝藻水华产品\太湖\太湖无水草边界.sbx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\产品矢量\蓝藻水华产品\太湖\太湖无水草边界.shp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\产品矢量\蓝藻水华产品\太湖\太湖无水草边界.shx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\产品矢量\蓝藻水华产品\巢湖\巢湖分区.dbf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\产品矢量\蓝藻水华产品\巢湖\巢湖分区.prj">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\产品矢量\蓝藻水华产品\巢湖\巢湖分区.sbn">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\产品矢量\蓝藻水华产品\巢湖\巢湖分区.sbx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\产品矢量\蓝藻水华产品\巢湖\巢湖分区.shp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\产品矢量\蓝藻水华产品\巢湖\巢湖分区.shx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\产品矢量\蓝藻水华产品\滇池\滇池分区.dbf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\产品矢量\蓝藻水华产品\滇池\滇池分区.prj">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\产品矢量\蓝藻水华产品\滇池\滇池分区.sbn">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\产品矢量\蓝藻水华产品\滇池\滇池分区.sbx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\产品矢量\蓝藻水华产品\滇池\滇池分区.shp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\产品矢量\蓝藻水华产品\滇池\滇池分区.shx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\关注区域\海冰关注区\渤海湾分区.dbf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\关注区域\海冰关注区\渤海湾分区.prj">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\关注区域\海冰关注区\渤海湾分区.sbn">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\关注区域\海冰关注区\渤海湾分区.sbx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\关注区域\海冰关注区\渤海湾分区.shp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\关注区域\海冰关注区\渤海湾分区.shx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\关注区域\重点水域\太湖水体边界.dbf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\关注区域\重点水域\太湖水体边界.prj">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\关注区域\重点水域\太湖水体边界.shp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\关注区域\重点水域\太湖水体边界.shx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\关注区域\重点水域\巢湖水体边界.dbf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\关注区域\重点水域\巢湖水体边界.prj">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\关注区域\重点水域\巢湖水体边界.sbn">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\关注区域\重点水域\巢湖水体边界.sbx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\关注区域\重点水域\巢湖水体边界.shp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\关注区域\重点水域\巢湖水体边界.shx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\关注区域\重点水域\洞庭湖水体边界.dbf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\关注区域\重点水域\洞庭湖水体边界.info">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\关注区域\重点水域\洞庭湖水体边界.prj">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\关注区域\重点水域\洞庭湖水体边界.shp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\关注区域\重点水域\洞庭湖水体边界.shx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\关注区域\重点水域\滇池水体边界.dbf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\关注区域\重点水域\滇池水体边界.prj">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\关注区域\重点水域\滇池水体边界.sbn">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\关注区域\重点水域\滇池水体边界.sbx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\关注区域\重点水域\滇池水体边界.shp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\关注区域\重点水域\滇池水体边界.shx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\关注区域\重点水域\鄱阳湖水体边界.dbf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\关注区域\重点水域\鄱阳湖水体边界.info">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\关注区域\重点水域\鄱阳湖水体边界.prj">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\关注区域\重点水域\鄱阳湖水体边界.shp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\关注区域\重点水域\鄱阳湖水体边界.shx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\其他矢量\太湖周边县面界.dbf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\其他矢量\太湖周边县面界.prj">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\其他矢量\太湖周边县面界.sbn">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\其他矢量\太湖周边县面界.sbx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\其他矢量\太湖周边县面界.shp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\其他矢量\太湖周边县面界.shx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\其他矢量\巢湖周边地区县区.dbf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\其他矢量\巢湖周边地区县区.prj">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\其他矢量\巢湖周边地区县区.sbn">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\其他矢量\巢湖周边地区县区.sbx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\其他矢量\巢湖周边地区县区.shp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\其他矢量\巢湖周边地区县区.shx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\其他矢量\巢湖周边地区地级市.dbf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\其他矢量\巢湖周边地区地级市.prj">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\其他矢量\巢湖周边地区地级市.sbn">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\其他矢量\巢湖周边地区地级市.sbx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\其他矢量\巢湖周边地区地级市.shp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\其他矢量\巢湖周边地区地级市.shx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\其他矢量\滇池周边县界.dbf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\其他矢量\滇池周边县界.prj">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\其他矢量\滇池周边县界.sbn">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\其他矢量\滇池周边县界.sbx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\其他矢量\滇池周边县界.shp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\其他矢量\滇池周边县界.shx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\SimpleMap.mcd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\河流湖泊\中国\中国_河流 湖泊_线.dbf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\河流湖泊\中国\中国_河流 湖泊_线.info">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\河流湖泊\中国\中国_河流 湖泊_线.mcd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\河流湖泊\中国\中国_河流 湖泊_线.shp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\河流湖泊\中国\中国_河流 湖泊_线.shx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\河流湖泊\中国\中国主要河流_线.dbf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\河流湖泊\中国\中国主要河流_线.prj">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\河流湖泊\中国\中国主要河流_线.sbn">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\河流湖泊\中国\中国主要河流_线.sbx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\河流湖泊\中国\中国主要河流_线.shp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\河流湖泊\中国\中国主要河流_线.shx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\河流湖泊\中国\中国河流.dbf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\河流湖泊\中国\中国河流.prj">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\河流湖泊\中国\中国河流.sbn">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\河流湖泊\中国\中国河流.sbx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\河流湖泊\中国\中国河流.shp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\河流湖泊\中国\中国河流.shx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\河流湖泊\中国\中国湖泊%28线%29.dbf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\河流湖泊\中国\中国湖泊%28线%29.prj">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\河流湖泊\中国\中国湖泊%28线%29.sbn">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\河流湖泊\中国\中国湖泊%28线%29.sbx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\河流湖泊\中国\中国湖泊%28线%29.shp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\河流湖泊\中国\中国湖泊%28线%29.shx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\河流湖泊\中国\中国湖泊.dbf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\河流湖泊\中国\中国湖泊.mcd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\河流湖泊\中国\中国湖泊.prj">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\河流湖泊\中国\中国湖泊.sbn">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\河流湖泊\中国\中国湖泊.sbx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\河流湖泊\中国\中国湖泊.shp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\河流湖泊\中国\中国湖泊.shx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\河流湖泊\全球\全球河流_线.dbf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\河流湖泊\全球\全球河流_线.mcd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\河流湖泊\全球\全球河流_线.prj">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\河流湖泊\全球\全球河流_线.sbn">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\河流湖泊\全球\全球河流_线.sbx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\河流湖泊\全球\全球河流_线.shp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\河流湖泊\全球\全球河流_线.shx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\河流湖泊\全球\全球湖泊%28线%29.dbf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\河流湖泊\全球\全球湖泊%28线%29.prj">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\河流湖泊\全球\全球湖泊%28线%29.sbn">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\河流湖泊\全球\全球湖泊%28线%29.sbx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\河流湖泊\全球\全球湖泊%28线%29.shp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\河流湖泊\全球\全球湖泊%28线%29.shx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\河流湖泊\全球\全球湖泊_面.dbf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\河流湖泊\全球\全球湖泊_面.mcd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\河流湖泊\全球\全球湖泊_面.prj">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\河流湖泊\全球\全球湖泊_面.sbn">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\河流湖泊\全球\全球湖泊_面.sbx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\河流湖泊\全球\全球湖泊_面.shp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\河流湖泊\全球\全球湖泊_面.shx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\矢量地图\世界.mcd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\矢量地图\中国.mcd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\矢量模版\土地利用类型_合并.dbf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\矢量模版\土地利用类型_合并.info">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\矢量模版\土地利用类型_合并.prj">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\矢量模版\土地利用类型_合并.sbn">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\矢量模版\土地利用类型_合并.sbx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\矢量模版\土地利用类型_合并.shp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\矢量模版\土地利用类型_合并.shx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\矢量模版\海陆模版.dbf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\矢量模版\海陆模版.prj">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\矢量模版\海陆模版.sbn">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\矢量模版\海陆模版.sbx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\矢量模版\海陆模版.shp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\矢量模版\海陆模版.shx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\经纬网格\经纬网5度.dbf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\经纬网格\经纬网5度.prj">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\经纬网格\经纬网5度.sbn">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\经纬网格\经纬网5度.sbx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\经纬网格\经纬网5度.shp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\经纬网格\经纬网5度.shx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\点\中国县市_点.dbf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\点\中国县市_点.info">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\点\中国县市_点.mcd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\点\中国县市_点.prj">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\点\中国县市_点.sbn">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\点\中国县市_点.sbx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\点\中国县市_点.shp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\点\中国县市_点.shx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\点\中国地级市_点.dbf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\点\中国地级市_点.info">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\点\中国地级市_点.mcd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\点\中国地级市_点.prj">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\点\中国地级市_点.sbn">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\点\中国地级市_点.sbx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\点\中国地级市_点.shp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\点\中国地级市_点.shx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\点\中国省会.dbf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\点\中国省会.mcd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\点\中国省会.prj">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\点\中国省会.sbn">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\点\中国省会.sbx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\点\中国省会.shp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\点\中国省会.shx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\点\中国首府_PT.dbf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\点\中国首府_PT.info">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\点\中国首府_PT.mcd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\点\中国首府_PT.prj">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\点\中国首府_PT.shp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\点\中国首府_PT.shx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\线\中国海岸线.dbf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\线\中国海岸线.sbn">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\线\中国海岸线.sbx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\线\中国海岸线.shp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\线\中国海岸线.shx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\线\中国行政区.mcd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\线\中国行政区_线.dbf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\线\中国行政区_线.mcd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\线\中国行政区_线.prj">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\线\中国行政区_线.sbn">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\线\中国行政区_线.sbx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\线\中国行政区_线.shp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\线\中国行政区_线.shx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\线\中国行政区_线_.evf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\线\中国边界.mcd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\线\中国边界_线.dbf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\线\中国边界_线.mcd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\线\中国边界_线.sbn">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\线\中国边界_线.sbx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\线\中国边界_线.shp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\线\中国边界_线.shx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\线\县级行政区域_线.dbf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\线\县级行政区域_线.mcd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\线\县级行政区域_线.sbn">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\线\县级行政区域_线.sbx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\线\县级行政区域_线.shp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\线\县级行政区域_线.shx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\线\国家_线.dbf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\线\国家_线.prj">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\线\国家_线.sbn">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\线\国家_线.sbx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\线\国家_线.shp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\线\国家_线.shx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\线\大洲_线.dbf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\线\大洲_线.prj">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\线\大洲_线.sbn">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\线\大洲_线.sbx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\线\大洲_线.shp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\线\大洲_线.shx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\线\市级行政区域_线.dbf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\线\市级行政区域_线.mcd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\线\市级行政区域_线.prj">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\线\市级行政区域_线.sbn">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\线\市级行政区域_线.sbx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\线\市级行政区域_线.shp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\线\市级行政区域_线.shx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\线\省级行政区域_线.dbf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\线\省级行政区域_线.mcd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\线\省级行政区域_线.sbn">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\线\省级行政区域_线.sbx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\线\省级行政区域_线.shp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\线\省级行政区域_线.shp.DODO-PC.41884.41876.sr.lock">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\线\省级行政区域_线.shx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\面\中国周边海陆模板.dbf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\面\中国周边海陆模板.info">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\面\中国周边海陆模板.prj">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\面\中国周边海陆模板.sbn">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\面\中国周边海陆模板.sbx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\面\中国周边海陆模板.shp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\面\中国周边海陆模板.shx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\面\中国行政区.dbf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\面\中国行政区.mcd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\面\中国行政区.prj">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\面\中国行政区.sbn">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\面\中国行政区.sbx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\面\中国行政区.shp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\面\中国行政区.shx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\面\中国行政区_注记.DBF">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\面\中国边界.dbf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\面\中国边界.info">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\面\中国边界.mcd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\面\中国边界.prj">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\面\中国边界.sbn">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\面\中国边界.sbx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\面\中国边界.shp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\面\中国边界.shx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\面\内蒙古盟市边界 .DBF">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\面\内蒙古盟市边界 .sbn">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\面\内蒙古盟市边界 .shp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\面\内蒙古盟市边界 .shx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\面\内蒙古盟市边界.dbf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\面\内蒙古盟市边界.evf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\面\内蒙古盟市边界.prj">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\面\内蒙古盟市边界.sb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\面\内蒙古盟市边界.sbx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\面\县级行政区域_面.dbf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\面\县级行政区域_面.info">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\面\县级行政区域_面.mcd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\面\县级行政区域_面.shp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\面\县级行政区域_面.shx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\面\国家.dbf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\面\国家.info">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\面\国家.prj">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\面\国家.sbn">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\面\国家.sbx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\面\国家.shp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\面\国家.shx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\面\国家.sidx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\面\大洲.dbf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\面\大洲.info">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\面\大洲.prj">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\面\大洲.sbn">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\面\大洲.sbx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\面\大洲.shp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\面\大洲.shx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\面\大洲_注记.DBF">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\面\市级行政区域_面.dbf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\面\市级行政区域_面.info">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\面\市级行政区域_面.mcd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\面\市级行政区域_面.prj">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\面\市级行政区域_面.sbn">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\面\市级行政区域_面.sbx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\面\市级行政区域_面.shp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\面\市级行政区域_面.shx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\面\省级行政区域_面.dbf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\面\省级行政区域_面.info">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\面\省级行政区域_面.mcd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\面\省级行政区域_面.shp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\基础矢量\行政区划\面\省级行政区域_面.shx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\标准分幅\产品相关分幅\干旱标准分幅.DBF">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\标准分幅\产品相关分幅\干旱标准分幅.mcd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\标准分幅\产品相关分幅\干旱标准分幅.shp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\标准分幅\产品相关分幅\干旱标准分幅.shx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\标准分幅\产品相关分幅\水体标准分幅.DBF">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\标准分幅\产品相关分幅\水体标准分幅.mcd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\标准分幅\产品相关分幅\水体标准分幅.shp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\标准分幅\产品相关分幅\水体标准分幅.shx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\标准分幅\产品相关分幅\海冰标准分幅.DBF">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\标准分幅\产品相关分幅\海冰标准分幅.mcd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\标准分幅\产品相关分幅\海冰标准分幅.shp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\标准分幅\产品相关分幅\海冰标准分幅.shx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\标准分幅\产品相关分幅\火情标准分幅.DBF">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\标准分幅\产品相关分幅\火情标准分幅.mcd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\标准分幅\产品相关分幅\火情标准分幅.shp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\标准分幅\产品相关分幅\火情标准分幅.shx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\标准分幅\产品相关分幅\积雪标准分幅.DBF">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\标准分幅\产品相关分幅\积雪标准分幅.mcd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\标准分幅\产品相关分幅\积雪标准分幅.shp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\标准分幅\产品相关分幅\积雪标准分幅.shx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\标准分幅\产品相关分幅\黄河冰凌标准分幅.DBF">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\标准分幅\产品相关分幅\黄河冰凌标准分幅.mcd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\标准分幅\产品相关分幅\黄河冰凌标准分幅.shp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\标准分幅\产品相关分幅\黄河冰凌标准分幅.shx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\标准分幅\标准分幅\标准10度分幅.DBF">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\标准分幅\标准分幅\标准10度分幅.mcd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\标准分幅\标准分幅\标准10度分幅.shp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\标准分幅\标准分幅\标准10度分幅.shx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\标准分幅\标准分幅\标准5度分幅.DBF">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\标准分幅\标准分幅\标准5度分幅.mcd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\标准分幅\标准分幅\标准5度分幅.shp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\标准分幅\标准分幅\标准5度分幅.shx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\标准分幅\自定义分幅\中国及周边.DBF">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\标准分幅\自定义分幅\中国及周边.mcd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\标准分幅\自定义分幅\中国及周边.shp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\标准分幅\自定义分幅\中国及周边.shx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\标准分幅\自定义分幅\太湖、阳澄湖局部.DBF">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\标准分幅\自定义分幅\太湖、阳澄湖局部.mcd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\标准分幅\自定义分幅\太湖、阳澄湖局部.shp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\标准分幅\自定义分幅\太湖、阳澄湖局部.shx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\标准分幅\自定义分幅\太湖蓝藻专题.DBF">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\标准分幅\自定义分幅\太湖蓝藻专题.mcd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\标准分幅\自定义分幅\太湖蓝藻专题.shp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\标准分幅\自定义分幅\太湖蓝藻专题.shx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\标准分幅\自定义分幅\巢湖局部.DBF">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\标准分幅\自定义分幅\巢湖局部.mcd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\标准分幅\自定义分幅\巢湖局部.shp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\标准分幅\自定义分幅\巢湖局部.shx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\标准分幅\自定义分幅\淮河洪涝监测.DBF">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\标准分幅\自定义分幅\淮河洪涝监测.mcd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\标准分幅\自定义分幅\淮河洪涝监测.shp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\标准分幅\自定义分幅\淮河洪涝监测.shx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\标准分幅\自定义分幅\黄河山东段.DBF">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\标准分幅\自定义分幅\黄河山东段.mcd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\标准分幅\自定义分幅\黄河山东段.shp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="数据引用\标准分幅\自定义分幅\黄河山东段.shx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
