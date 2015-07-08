@@ -147,6 +147,12 @@
     <Compile Include="ImageGDILayer.cs" />
     <Compile Include="IDataProvider.cs" />
     <Compile Include="ImageLayer.cs" />
+    <Compile Include="ImgDispCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ImgDispCtrl.Designer.cs">
+      <DependentUpon>ImgDispCtrl.cs</DependentUpon>
+    </Compile>
     <Compile Include="IPalette.cs" />
     <Compile Include="PointsBuilder\RandomPointsBuilder.cs" />
     <Compile Include="Projection.cs" />
@@ -173,6 +179,9 @@
     <Compile Include="SHPLayer.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="ImgDispCtrl.resx">
+      <DependentUpon>ImgDispCtrl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MapControl.resx">
       <DependentUpon>MapControl.cs</DependentUpon>
     </EmbeddedResource>

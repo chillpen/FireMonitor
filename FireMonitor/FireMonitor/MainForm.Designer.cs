@@ -28,21 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            this.navbarImageListLarge = new System.Windows.Forms.ImageList();
-            this.navbarImageList = new System.Windows.Forms.ImageList();
+            this.navbarImageListLarge = new System.Windows.Forms.ImageList(this.components);
+            this.navbarImageList = new System.Windows.Forms.ImageList(this.components);
             this.ribbonControl = new DevExpress.XtraBars.Ribbon.RibbonControl();
-            this.appMenu = new DevExpress.XtraBars.Ribbon.ApplicationMenu();
-            this.popupControlContainer2 = new DevExpress.XtraBars.PopupControlContainer();
-            this.buttonEdit = new DevExpress.XtraEditors.ButtonEdit();
+            this.appMenu = new DevExpress.XtraBars.Ribbon.ApplicationMenu(this.components);
             this.iOpen = new DevExpress.XtraBars.BarButtonItem();
             this.iSave = new DevExpress.XtraBars.BarButtonItem();
             this.iSaveAs = new DevExpress.XtraBars.BarButtonItem();
             this.iExit = new DevExpress.XtraBars.BarButtonItem();
-            this.popupControlContainer1 = new DevExpress.XtraBars.PopupControlContainer();
-            this.someLabelControl2 = new DevExpress.XtraEditors.LabelControl();
-            this.someLabelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.ribbonImageCollection = new DevExpress.Utils.ImageCollection();
+            this.ribbonImageCollection = new DevExpress.Utils.ImageCollection(this.components);
             this.iClose = new DevExpress.XtraBars.BarButtonItem();
             this.iFind = new DevExpress.XtraBars.BarButtonItem();
             this.iHelp = new DevExpress.XtraBars.BarButtonItem();
@@ -58,7 +54,7 @@
             this.iCenterTextAlign = new DevExpress.XtraBars.BarButtonItem();
             this.iRightTextAlign = new DevExpress.XtraBars.BarButtonItem();
             this.rgbiSkins = new DevExpress.XtraBars.RibbonGalleryBarItem();
-            this.ribbonImageCollectionLarge = new DevExpress.Utils.ImageCollection();
+            this.ribbonImageCollectionLarge = new DevExpress.Utils.ImageCollection(this.components);
             this.homeRibbonPage = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.fileRibbonPageGroup = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.formatRibbonPageGroup = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -67,19 +63,10 @@
             this.helpRibbonPage = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.helpRibbonPageGroup = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
-            this.splitContainerControl = new DevExpress.XtraEditors.SplitContainerControl();
-            this.mainControl1 = new MapHandle.MainControl();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.appMenu)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.popupControlContainer2)).BeginInit();
-            this.popupControlContainer2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.buttonEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.popupControlContainer1)).BeginInit();
-            this.popupControlContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonImageCollection)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonImageCollectionLarge)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl)).BeginInit();
-            this.splitContainerControl.SuspendLayout();
             this.SuspendLayout();
             // 
             // navbarImageListLarge
@@ -146,39 +133,13 @@
             // 
             // appMenu
             // 
-            this.appMenu.BottomPaneControlContainer = this.popupControlContainer2;
             this.appMenu.ItemLinks.Add(this.iOpen);
             this.appMenu.ItemLinks.Add(this.iSave);
             this.appMenu.ItemLinks.Add(this.iSaveAs);
             this.appMenu.ItemLinks.Add(this.iExit);
             this.appMenu.Name = "appMenu";
             this.appMenu.Ribbon = this.ribbonControl;
-            this.appMenu.RightPaneControlContainer = this.popupControlContainer1;
             this.appMenu.ShowRightPane = true;
-            // 
-            // popupControlContainer2
-            // 
-            this.popupControlContainer2.Appearance.BackColor = System.Drawing.Color.Transparent;
-            this.popupControlContainer2.Appearance.Options.UseBackColor = true;
-            this.popupControlContainer2.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.popupControlContainer2.Controls.Add(this.buttonEdit);
-            this.popupControlContainer2.Location = new System.Drawing.Point(316, 258);
-            this.popupControlContainer2.Name = "popupControlContainer2";
-            this.popupControlContainer2.Ribbon = this.ribbonControl;
-            this.popupControlContainer2.Size = new System.Drawing.Size(118, 28);
-            this.popupControlContainer2.TabIndex = 5;
-            this.popupControlContainer2.Visible = false;
-            // 
-            // buttonEdit
-            // 
-            this.buttonEdit.EditValue = "Some Text";
-            this.buttonEdit.Location = new System.Drawing.Point(3, 3);
-            this.buttonEdit.MenuManager = this.ribbonControl;
-            this.buttonEdit.Name = "buttonEdit";
-            this.buttonEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.buttonEdit.Size = new System.Drawing.Size(100, 20);
-            this.buttonEdit.TabIndex = 0;
             // 
             // iOpen
             // 
@@ -221,36 +182,6 @@
             this.iExit.ImageIndex = 6;
             this.iExit.LargeImageIndex = 6;
             this.iExit.Name = "iExit";
-            // 
-            // popupControlContainer1
-            // 
-            this.popupControlContainer1.Appearance.BackColor = System.Drawing.Color.Transparent;
-            this.popupControlContainer1.Appearance.Options.UseBackColor = true;
-            this.popupControlContainer1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.popupControlContainer1.Controls.Add(this.someLabelControl2);
-            this.popupControlContainer1.Controls.Add(this.someLabelControl1);
-            this.popupControlContainer1.Location = new System.Drawing.Point(208, 168);
-            this.popupControlContainer1.Name = "popupControlContainer1";
-            this.popupControlContainer1.Ribbon = this.ribbonControl;
-            this.popupControlContainer1.Size = new System.Drawing.Size(76, 70);
-            this.popupControlContainer1.TabIndex = 4;
-            this.popupControlContainer1.Visible = false;
-            // 
-            // someLabelControl2
-            // 
-            this.someLabelControl2.Location = new System.Drawing.Point(3, 57);
-            this.someLabelControl2.Name = "someLabelControl2";
-            this.someLabelControl2.Size = new System.Drawing.Size(57, 14);
-            this.someLabelControl2.TabIndex = 0;
-            this.someLabelControl2.Text = "Some Info";
-            // 
-            // someLabelControl1
-            // 
-            this.someLabelControl1.Location = new System.Drawing.Point(3, 3);
-            this.someLabelControl1.Name = "someLabelControl1";
-            this.someLabelControl1.Size = new System.Drawing.Size(57, 14);
-            this.someLabelControl1.TabIndex = 0;
-            this.someLabelControl1.Text = "Some Info";
             // 
             // ribbonImageCollection
             // 
@@ -482,38 +413,12 @@
             this.ribbonStatusBar.Ribbon = this.ribbonControl;
             this.ribbonStatusBar.Size = new System.Drawing.Size(950, 31);
             // 
-            // splitContainerControl
-            // 
-            this.splitContainerControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainerControl.Location = new System.Drawing.Point(0, 147);
-            this.splitContainerControl.Name = "splitContainerControl";
-            this.splitContainerControl.Padding = new System.Windows.Forms.Padding(6);
-            this.splitContainerControl.Panel1.Text = "Panel1";
-            this.splitContainerControl.Panel2.Controls.Add(this.mainControl1);
-            this.splitContainerControl.Panel2.Text = "Panel2";
-            this.splitContainerControl.Size = new System.Drawing.Size(950, 372);
-            this.splitContainerControl.SplitterPosition = 165;
-            this.splitContainerControl.TabIndex = 0;
-            this.splitContainerControl.Text = "splitContainerControl1";
-            // 
-            // mainControl1
-            // 
-            this.mainControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mainControl1.Location = new System.Drawing.Point(0, 0);
-            this.mainControl1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.mainControl1.Name = "mainControl1";
-            this.mainControl1.Size = new System.Drawing.Size(768, 360);
-            this.mainControl1.TabIndex = 0;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(950, 550);
-            this.Controls.Add(this.splitContainerControl);
             this.Controls.Add(this.ribbonControl);
-            this.Controls.Add(this.popupControlContainer1);
-            this.Controls.Add(this.popupControlContainer2);
             this.Controls.Add(this.ribbonStatusBar);
             this.Name = "MainForm";
             this.Ribbon = this.ribbonControl;
@@ -521,16 +426,8 @@
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.appMenu)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.popupControlContainer2)).EndInit();
-            this.popupControlContainer2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.buttonEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.popupControlContainer1)).EndInit();
-            this.popupControlContainer1.ResumeLayout(false);
-            this.popupControlContainer1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonImageCollection)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonImageCollectionLarge)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl)).EndInit();
-            this.splitContainerControl.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -565,17 +462,11 @@
         private DevExpress.XtraBars.Ribbon.RibbonPage helpRibbonPage;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup helpRibbonPageGroup;
         private DevExpress.XtraBars.Ribbon.ApplicationMenu appMenu;
-        private DevExpress.XtraBars.PopupControlContainer popupControlContainer1;
-        private DevExpress.XtraEditors.LabelControl someLabelControl2;
-        private DevExpress.XtraEditors.LabelControl someLabelControl1;
-        private DevExpress.XtraBars.PopupControlContainer popupControlContainer2;
-        private DevExpress.XtraEditors.ButtonEdit buttonEdit;
         private DevExpress.XtraBars.Ribbon.RibbonStatusBar ribbonStatusBar;
         private DevExpress.Utils.ImageCollection ribbonImageCollection;
         private DevExpress.Utils.ImageCollection ribbonImageCollectionLarge;
         private System.Windows.Forms.ImageList navbarImageList;
         private System.Windows.Forms.ImageList navbarImageListLarge;
-        private DevExpress.XtraEditors.SplitContainerControl splitContainerControl;
         private MapHandle.MainControl mainControl1;
 
     }
