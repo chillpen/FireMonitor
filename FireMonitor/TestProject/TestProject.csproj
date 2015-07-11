@@ -33,10 +33,102 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BruTile">
+      <HintPath>..\Components\DLL\RSMap\BruTile.dll</HintPath>
+    </Reference>
+    <Reference Include="BruTile.Desktop">
+      <HintPath>..\Components\DLL\RSMap\BruTile.Desktop.dll</HintPath>
+    </Reference>
+    <Reference Include="Common.Logging">
+      <HintPath>..\Components\DLL\RSMap\Common.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Component">
+      <HintPath>..\Components\DLL\RSMap\Component.dll</HintPath>
+    </Reference>
+    <Reference Include="FreeImageNET">
+      <HintPath>..\Components\DLL\RSMap\FreeImageNET.dll</HintPath>
+    </Reference>
+    <Reference Include="gdal_csharp">
+      <HintPath>..\Components\DLL\RSMap\gdal_csharp.dll</HintPath>
+    </Reference>
+    <Reference Include="GeoAPI">
+      <HintPath>..\Components\DLL\RSMap\GeoAPI.dll</HintPath>
+    </Reference>
+    <Reference Include="HDF5DotNet">
+      <HintPath>..\Components\DLL\RSMap\HDF5DotNet.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.VisualStudio.QualityTools.CodedUITestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Extension, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.TestTools.UITesting, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="MySql.Data">
+      <HintPath>..\Components\DLL\RSMap\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="NetTopologySuite">
+      <HintPath>..\Components\DLL\RSMap\NetTopologySuite.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL" />
+    <Reference Include="ogr_csharp">
+      <HintPath>..\Components\DLL\RSMap\ogr_csharp.dll</HintPath>
+    </Reference>
+    <Reference Include="osr_csharp">
+      <HintPath>..\Components\DLL\RSMap\osr_csharp.dll</HintPath>
+    </Reference>
+    <Reference Include="PowerCollections">
+      <HintPath>..\Components\DLL\RSMap\PowerCollections.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="Proj4App">
+      <HintPath>..\Components\DLL\RSMap\Proj4App.dll</HintPath>
+    </Reference>
+    <Reference Include="ProjAPI">
+      <HintPath>..\Components\DLL\RSMap\ProjAPI.dll</HintPath>
+    </Reference>
+    <Reference Include="ProjNet">
+      <HintPath>..\Components\DLL\RSMap\ProjNet.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpMap">
+      <HintPath>..\Components\DLL\RSMap\SharpMap.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpMap.Extensions">
+      <HintPath>..\Components\DLL\RSMap\SharpMap.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpMap.UI">
+      <HintPath>..\Components\DLL\RSMap\SharpMap.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="SkinForm">
+      <HintPath>..\Components\DLL\RSMap\SkinForm.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="UIAutomationTypes" />
+    <Reference Include="WeifenLuo.WinFormsUI.Docking">
+      <HintPath>..\Components\DLL\RSMap\WeifenLuo.WinFormsUI.Docking.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="WindowsFormsIntegration" />
+    <Reference Include="XPTable">
+      <HintPath>..\Components\DLL\RSMap\XPTable.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -45,8 +137,30 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CodedUITest1.cs" />
+    <Compile Include="ImgDispCtrlForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ImgDispCtrlForm.Designer.cs">
+      <DependentUpon>ImgDispCtrlForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ImgDispCtrlTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UnitTest1.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Shadow Include="测试引用\MapHandle.accessor" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MapHandle\MapHandle.csproj">
+      <Project>{67264858-0382-4E3A-9585-423AC0F5CB0F}</Project>
+      <Name>MapHandle</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ImgDispCtrlForm.resx">
+      <DependentUpon>ImgDispCtrlForm.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

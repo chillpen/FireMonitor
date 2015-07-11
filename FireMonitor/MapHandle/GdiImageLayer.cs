@@ -28,8 +28,6 @@ using GeoAPI.Geometries;
 using NetTopologySuite.Geometries;
 using RTools_NTS.Util;
 using Point = System.Drawing.Point;
-using MapHandle;
-
 
 namespace SharpMap.Layers
 {
@@ -38,7 +36,7 @@ namespace SharpMap.Layers
     /// Image to 
     /// </summary>
     [Serializable]
-    public class ImageGDILayer : Layer
+    public class GdiImageLayer : Layer
     {
         private Image _image;
 
@@ -52,16 +50,14 @@ namespace SharpMap.Layers
         private Envelope _envelope;
 
         private float _transparency;
-        private config cfg;
 
         /// <summary>
         /// Creates an instance of this class using the provided layer
         /// </summary>
         /// <param name="fileName">The path to the file</param>
-        public ImageGDILayer(string fileName,config incfg)
-            : this(Path.GetFileName(fileName), fileName,incfg)
+        public GdiImageLayer(string fileName)
+            : this(Path.GetFileName(fileName), fileName)
         {
-            
         }
 
         /// <summary>
@@ -69,13 +65,11 @@ namespace SharpMap.Layers
         /// </summary>
         /// <param name="layerName">The name of the layer</param>
         /// <param name="fileName">The path to the file</param>
-        public ImageGDILayer(string layerName, string fileName, config incfg)
-            :this(layerName, Image.FromFile(fileName), incfg)
+        public GdiImageLayer(string layerName, string fileName)
+            :this(layerName, Image.FromFile(fileName))
         {
             ImageFilename = fileName;
-
             SetEnvelope(fileName);
-            _envelope = new Envelope(cfg.minX,cfg.maxX,cfg.minY,cfg.maxY); 
         }
 
         /// <summary>
@@ -83,21 +77,13 @@ namespace SharpMap.Layers
         /// </summary>
         /// <param name="layerName">The layer name</param>
         /// <param name="image"></param>
-        public ImageGDILayer(string layerName, Image image, config incfg)
+        public GdiImageLayer(string layerName, Image image)
         {
             InterpolationMode = InterpolationMode.HighQualityBicubic;
 
             LayerName = layerName;
             _image = image;
-
             SetEnvelope();
-            cfg = incfg;
-            //for test purposes
-            //cfg.minX = 152203.122f;
-            //cfg.maxX = 3158014f;
-            //cfg.minY = 3086534.736f;
-            //cfg.maxY = 6023337.07f;
-            _envelope = new Envelope(cfg.minX, cfg.maxX, cfg.minY, cfg.maxY); 
         }
 
         /// <summary>
@@ -106,10 +92,7 @@ namespace SharpMap.Layers
         private void SetEnvelope()
         {
             _worldFile = _worldFile ?? new WorldFile(1, 0, 0, -1, 0, _image.Height);
-            //_worldFile = _worldFile ?? new WorldFile(1, 0, 0, -1, _envelope.MinX, _envelope.MaxY);
             _envelope = _worldFile.ToGroundBounds(_image.Width, _image.Height).EnvelopeInternal;
-
-            
         }
 
         /// <summary>
@@ -127,6 +110,7 @@ namespace SharpMap.Layers
             {
                 _image = value;
                 _envelope = new Envelope(0, _image.Width, 0, _image.Height);
+                
             }
         }
 
@@ -134,12 +118,12 @@ namespace SharpMap.Layers
         /// Returns the extent of the layer
         /// </summary>
         /// <returns>Bounding box corresponding to the extent of the features in the layer</returns>
-        public  override GeoAPI.Geometries.Envelope Envelope
+        public override Envelope Envelope
         {
             get
             {
                 // Avoid manipulation, return a copy
-                return new GeoAPI.Geometries.Envelope(_envelope);
+                return new Envelope(_envelope);
             }
         }
 
@@ -167,7 +151,6 @@ namespace SharpMap.Layers
         {
             base.ReleaseManagedResources();
             _image.Dispose();
-
         }
 
         /// <summary>
@@ -198,15 +181,12 @@ namespace SharpMap.Layers
 
             // Get the view intersection
             var vi = mapView.Intersection(lyrView);
-            //
-           
             if (doRender && !vi.IsNull)
             {
                 // Image part
 // ReSharper disable InconsistentNaming
-                var imgLT = Clip(Point.Truncate(new Point((int)vi.MinX, (int)vi.MaxY)),map.PixelSize);
-                var imgRB = Clip(Point.Ceiling(new Point((int)vi.MaxX, (int)vi.MinY)), map.PixelSize);
-                
+                var imgLT = Clip(_worldFile.ToRaster(new Coordinate(vi.MinX, vi.MaxY)));
+                var imgRB = Clip(_worldFile.ToRaster(new Coordinate(vi.MaxX, vi.MinY)));
                 var imgRect = new Rectangle(imgLT, PointDiff(imgLT, imgRB, 1));
 
                 // Map Part
@@ -235,8 +215,6 @@ namespace SharpMap.Layers
             }
 
             base.Render(g, map);
-            
-            
         }
 
         /// <summary>
@@ -244,35 +222,17 @@ namespace SharpMap.Layers
         /// </summary>
         /// <param name="pt">The point</param>
         /// <returns>The clipped point</returns>
-        //private Point Clip(Point pt)
-        //{
-        //    var x = pt.X;
-        //    if (x < cfg.minX) x = 0;
-        //    if (x > cfg.maxX) x = Image.Width;
-
-
-        //    var y = pt.Y;
-        //    if (y < cfg.minY) y = 0;
-        //    if (y > cfg.maxY) y = Image.Height;
-
-        //    return new Point(x, y);
-        //}
-
-        //Clip function, modified by Run SHI, compute image left-top & right-bottom index from world coordinate
-        private Point Clip(Point pt, double pixelsize)
+        private Point Clip(Point pt)
         {
-            //conversion between coordinates, pay attention to different coordinate origin locations
-
-            var x = (int)((pt.X - cfg.minX) / cfg.resolution);
+            var x = pt.X;
             if (x < 0) x = 0;
             if (x > _image.Width) x = Image.Width;
 
-            var y = - (int)((pt.Y - cfg.maxY) / cfg.resolution);
+            var y = pt.Y;
             if (y < 0) y = 0;
             if (y > _image.Height) y = Image.Height;
 
             return new Point(x, y);
-
         }
 
         private static Size PointDiff(Point p1, Point p2, int invertY = -1)
