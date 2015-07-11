@@ -145,6 +145,7 @@
     <Compile Include="DefaultData.cs" />
     <Compile Include="DefaultPalette.cs" />
     <Compile Include="GdiImageLayer.cs" />
+    <Compile Include="HDFDataProvider.cs" />
     <Compile Include="ImageGDILayer.cs" />
     <Compile Include="IDataProvider.cs" />
     <Compile Include="ImageLayer.cs" />
