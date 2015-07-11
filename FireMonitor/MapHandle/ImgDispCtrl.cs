@@ -26,6 +26,5 @@ namespace MapHandle
             //set { m_MapBox = value; }
         }
 
-
     }
 }

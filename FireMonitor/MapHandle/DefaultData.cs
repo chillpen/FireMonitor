@@ -25,6 +25,7 @@ namespace MapHandle
             return bmp;
         }
 
+        public event EventHandler DataChanged;
        
     }
 }
