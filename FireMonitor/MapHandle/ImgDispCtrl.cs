@@ -6,8 +6,6 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using SharpMap.Layers;
-using SharpMap.Data.Providers;
 
 namespace MapHandle
 {
@@ -17,15 +15,5 @@ namespace MapHandle
         {
             InitializeComponent();
         }
-
- 
-       
-        public SharpMap.Forms.MapBox MapBox
-        {
-            get { return this.mapBox1; }
-            //set { m_MapBox = value; }
-        }
-
-
     }
 }

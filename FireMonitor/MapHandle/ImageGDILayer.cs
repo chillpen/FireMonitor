@@ -30,7 +30,6 @@ using RTools_NTS.Util;
 using Point = System.Drawing.Point;
 using MapHandle;
 
-
 namespace SharpMap.Layers
 {
 
