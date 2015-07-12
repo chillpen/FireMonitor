@@ -26,7 +26,7 @@ namespace FireMonitor.HDFOper
     }
     public class HDFOperator
     {
-        private H5FileId m_fileId;
+        private H5FileId m_fileId = null;
 
         private HdfAttributeOperator m_attributeOper = new HdfAttributeOperator();
         private HDFDatasetOperator m_datasetOper = new HDFDatasetOperator();
@@ -42,7 +42,7 @@ namespace FireMonitor.HDFOper
                 ret = false;
             }
 
-            
+
             DumpAttri(hdfFile);
 
             return ret;
@@ -50,7 +50,8 @@ namespace FireMonitor.HDFOper
 
         public void Close()
         {
-            H5F.close(m_fileId);
+            if (m_fileId != null)
+                H5F.close(m_fileId);
         }
 
         public void GetHdfObjInfo()
@@ -88,7 +89,7 @@ namespace FireMonitor.HDFOper
                                                H5LinkInfo info, Object param)
         {
             H5ObjectInfo objInfo = H5O.getInfoByName(id, objectName);
-            
+
             string groupName = (string)param;
             switch (objInfo.objectType)
             {
@@ -130,17 +131,17 @@ namespace FireMonitor.HDFOper
 
         public DatasetInfo GetDatasetInfo(string datasetName, string groupName)
         {
-            return m_datasetOper.GetDatasetInfo(m_fileId,datasetName, groupName);
+            return m_datasetOper.GetDatasetInfo(m_fileId, datasetName, groupName);
         }
 
-        public void GetDataset<T>(string datasetName, string groupName,T[,] datasetOut, int rowIndex, int rowcount)
+        public void GetDataset<T>(string datasetName, string groupName, T[,] datasetOut, int rowIndex, int rowcount)
         {
             //m_datasetOper.GetDataset(m_fileId, datasetName, groupName,datasetOut, rowIndex, rowcount);
         }
 
-        public void GetDataset<T>(string datasetName, string groupName, T[,,] datasetOut,DataValueType type)
+        public void GetDataset<T>(string datasetName, string groupName, T[, ,] datasetOut, DataValueType type)
         {
-            m_datasetOper.GetDataset(m_fileId, datasetName, groupName,datasetOut,type);
+            m_datasetOper.GetDataset(m_fileId, datasetName, groupName, datasetOut, type);
         }
 
         protected void DumpAttri(string hdfFile)
@@ -158,12 +159,12 @@ namespace FireMonitor.HDFOper
             m_Proc.StartInfo.WorkingDirectory = dir;
             m_Proc.StartInfo.CreateNoWindow = true;
             m_Proc.StartInfo.UseShellExecute = false;
-           // m_Proc.StartInfo.RedirectStandardOutput = true;
+            // m_Proc.StartInfo.RedirectStandardOutput = true;
             // m_Proc.OutputDataReceived += new DataReceivedEventHandler(OnProc_OutputDataReceived);
-           // m_Proc.StartInfo.RedirectStandardInput = true;
+            // m_Proc.StartInfo.RedirectStandardInput = true;
             //m_Proc.EnableRaisingEvents = true;
-       
-           //m_Proc.StartInfo.Arguments = "-A --xml " + hdfFile + ">" + "C:\\项目\\HDFCompareStatistic\\TestData\\1.xml" ;
+
+            //m_Proc.StartInfo.Arguments = "-A --xml " + hdfFile + ">" + "C:\\项目\\HDFCompareStatistic\\TestData\\1.xml" ;
             m_Proc.StartInfo.Arguments = hdfFile;
             m_Proc.Start();
 

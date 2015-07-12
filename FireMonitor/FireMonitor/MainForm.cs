@@ -11,7 +11,7 @@ using DevExpress.UserSkins;
 using DevExpress.XtraBars;
 using DevExpress.XtraBars.Ribbon;
 using DevExpress.XtraBars.Helpers;
-
+using FireMonitor.DataProvider;
 
 namespace FireMonitor
 {
@@ -22,6 +22,8 @@ namespace FireMonitor
             InitializeComponent();
             InitSkinGallery();
             InitGrid();
+
+            FY3AVirrL1DataProvider provider = new FY3AVirrL1DataProvider();
 
         }
         void InitSkinGallery()

@@ -45,6 +45,15 @@
     <Reference Include="Component">
       <HintPath>..\Components\DLL\RSMap\Component.dll</HintPath>
     </Reference>
+    <Reference Include="DevExpress.BonusSkins.v11.2, Version=11.2.10.0, Culture=neutral, PublicKeyToken=95fc6c5621878f0a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Data.v11.2, Version=11.2.10.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Printing.v11.2.Core, Version=11.2.10.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Utils.v11.2, Version=11.2.10.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraBars.v11.2, Version=11.2.10.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v11.2, Version=11.2.10.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGrid.v11.2, Version=11.2.10.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v11.2, Version=11.2.10.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraNavBar.v11.2, Version=11.2.10.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="FreeImageNET">
       <HintPath>..\Components\DLL\RSMap\FreeImageNET.dll</HintPath>
     </Reference>
@@ -116,6 +125,7 @@
     </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xaml" />
@@ -138,6 +148,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CodedUITest1.cs" />
+    <Compile Include="FY3AVirrL1DataProviderTest.cs" />
     <Compile Include="ImgDispCtrlForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -152,6 +163,10 @@
     <Shadow Include="测试引用\MapHandle.accessor" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\FireMonitor\FireMonitor.csproj">
+      <Project>{A8F847CE-630E-4F08-8462-0E0AAAC3088D}</Project>
+      <Name>FireMonitor</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MapHandle\MapHandle.csproj">
       <Project>{67264858-0382-4E3A-9585-423AC0F5CB0F}</Project>
       <Name>MapHandle</Name>

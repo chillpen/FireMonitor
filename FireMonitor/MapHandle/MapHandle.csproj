@@ -67,10 +67,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Components\DLL\RSMap\GeoAPI.dll</HintPath>
     </Reference>
-    <Reference Include="HDF5DotNet, Version=1.8.9.0, Culture=neutral, PublicKeyToken=a4952c8df86d6e8c, processorArchitecture=AMD64">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Components\DLL\RSMap\HDF5DotNet.dll</HintPath>
-    </Reference>
     <Reference Include="MySql.Data">
       <HintPath>..\Components\DLL\RSMap\MySql.Data.dll</HintPath>
     </Reference>

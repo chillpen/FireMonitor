@@ -43,25 +43,41 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="DLL\DEV\DevExpress.BonusSkins.v11.2.dll" />
-    <Content Include="DLL\DEV\DevExpress.Data.v11.2.dll" />
-    <Content Include="DLL\DEV\DevExpress.Utils.v11.2.dll" />
-    <Content Include="DLL\DEV\DevExpress.XtraBars.v11.2.dll" />
-    <Content Include="DLL\DEV\DevExpress.XtraEditors.v11.2.dll" />
+    <Content Include="DLL\DEV\DevExpress.BonusSkins.v11.2.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DLL\DEV\DevExpress.Data.v11.2.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DLL\DEV\DevExpress.Utils.v11.2.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DLL\DEV\DevExpress.XtraBars.v11.2.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DLL\DEV\DevExpress.XtraEditors.v11.2.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="DLL\HDF5\hdf5dll.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="DLL\HDF5\HDF5DotNet.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="DLL\HDF5\hdf5_hldll.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="DLL\HDF5\szip.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DLL\HDF5\szlibdll.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DLL\HDF5\zlib.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="DLL\HDF5\zlib1.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="DLL\PROJ\proj.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
