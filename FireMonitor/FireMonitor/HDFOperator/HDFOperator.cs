@@ -43,7 +43,7 @@ namespace FireMonitor.HDFOper
             }
 
 
-            DumpAttri(hdfFile);
+            //DumpAttri(hdfFile);
 
             return ret;
         }

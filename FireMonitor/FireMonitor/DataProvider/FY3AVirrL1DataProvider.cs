@@ -23,8 +23,18 @@ namespace FireMonitor.DataProvider
             int[, ,] datasetInt = new int[band, row, col];
 
             m_hdfOperator.GetDataset("EV_RefSB", "/", datasetInt, datasetInfo.type);
-            System.Drawing.Bitmap bmp = null;
+            System.Drawing.Bitmap bmp = new System.Drawing.Bitmap(row,col);
 
+            bmp.
+
+            for(int i =0;i<row;i++)
+            {
+                for (int j = 0; j < col; j++)
+                {
+                    //bmp.SetPixel(row, col, datasetInt[0, i, j]);
+                }
+            }
+           
             return bmp;
         }
 

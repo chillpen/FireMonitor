@@ -63,8 +63,9 @@
     <Reference Include="GeoAPI">
       <HintPath>..\Components\DLL\RSMap\GeoAPI.dll</HintPath>
     </Reference>
-    <Reference Include="HDF5DotNet">
-      <HintPath>..\Components\DLL\RSMap\HDF5DotNet.dll</HintPath>
+    <Reference Include="HDF5DotNet, Version=1.8.9.0, Culture=neutral, PublicKeyToken=a4952c8df86d6e8c, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Components\HDF5DotNet.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.VisualStudio.QualityTools.CodedUITestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
