@@ -9,8 +9,8 @@ namespace MapHandle
     {
         System.Drawing.Bitmap GetData();
 
-        event EventHandler DataChanged;
-       
-        
+        event EventHandler DataChangedEvent;
+
+        void DataChange();
     }
 }

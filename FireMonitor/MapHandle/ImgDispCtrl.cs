@@ -13,6 +13,7 @@ namespace MapHandle
 {
     public partial class ImgDispCtrl : UserControl
     {
+        private IDataProvider m_dataProvider = null;
         public ImgDispCtrl()
         {
             InitializeComponent();
@@ -30,13 +31,18 @@ namespace MapHandle
         {
             set
             {
-                GdiImageLayer gdilayer = new GdiImageLayer("Test", value);
+                m_dataProvider = value;
+                GdiImageLayer gdilayer = new GdiImageLayer("Data", m_dataProvider);
                 this.mapBox1.Map.Layers.Add(gdilayer);
+                m_dataProvider.DataChangedEvent += new EventHandler(m_dataProvider_DataChangedEvent);
 
-
-                this.mapBox1.Map.ZoomToExtents();
-                this.mapBox1.Refresh();
             }
+        }
+
+        void m_dataProvider_DataChangedEvent(object sender, EventArgs e)
+        {
+            this.mapBox1.Map.ZoomToExtents();
+            this.mapBox1.Refresh();
         }
     }
 }

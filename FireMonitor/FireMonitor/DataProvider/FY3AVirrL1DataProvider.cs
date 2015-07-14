@@ -24,7 +24,7 @@ namespace FireMonitor.DataProvider
             int[, ,] datasetInt = new int[band, row, col];
 
             m_hdfOperator.GetDataset("EV_RefSB", "/", datasetInt, datasetInfo.type);
-            System.Drawing.Bitmap bmp = new System.Drawing.Bitmap(row, col,PixelFormat.Format24bppRgb);
+            System.Drawing.Bitmap bmp = new System.Drawing.Bitmap(col, row,PixelFormat.Format24bppRgb);
 
 
 
@@ -44,8 +44,8 @@ namespace FireMonitor.DataProvider
                 {
                     for (int j = 0; j < col; j++)
                     {
-                        int pixelCount = pixel << 2;
-                        byte pixelValue = (byte)(datasetInt[0, i, j] * 255 / 4096);
+                        int pixelCount = pixel*3;
+                        byte pixelValue = (byte)(datasetInt[1, i, j] * 255 / 1024);
                         *(p + pixelCount) = pixelValue;		//R
                         *(p + pixelCount + 1) = pixelValue;	//G
                         *(p + pixelCount + 2) = pixelValue;	//B
@@ -54,12 +54,18 @@ namespace FireMonitor.DataProvider
                     }
                 }
             }
-
+            bmp.UnlockBits(bmpData);
 
             return bmp;
         }
 
-        public event EventHandler DataChanged;
+        public event EventHandler DataChangedEvent;
+
+        public void DataChange()
+        {
+            if (this.DataChangedEvent != null)
+                this.DataChangedEvent(this, null);
+        }
 
         private string m_file;
         public string File

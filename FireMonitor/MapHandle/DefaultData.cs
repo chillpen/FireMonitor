@@ -25,7 +25,11 @@ namespace MapHandle
             return bmp;
         }
 
-        public event EventHandler DataChanged;
+        public event EventHandler DataChangedEvent;
+
+        public void DataChange()
+        {
+        }
        
     }
 }

@@ -133,7 +133,7 @@ namespace SharpMap.Layers
             {
                 m_DataProvider = value;
 
-                m_DataProvider.DataChanged += new EventHandler(On_DataProvider_DataChanged);
+                m_DataProvider.DataChangedEvent += new EventHandler(On_DataProvider_DataChanged);
 
             }
         }
@@ -146,6 +146,8 @@ namespace SharpMap.Layers
 
             _image = m_DataProvider.GetData();
             SetEnvelope();
+
+            
         }
 
         /// <summary>

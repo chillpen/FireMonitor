@@ -25,11 +25,17 @@ namespace FireMonitor
 
             FY3AVirrL1DataProvider provider = new FY3AVirrL1DataProvider();
 
-
+            //provider.DataChanged += new EventHandler(provider_DataChanged);
+           
+            provider.File = "C:\\Data\\FY3A_VIRRX_GBAL_L1_20090427_0255_1000M_MS.HDF";
             this.imgDispCtrl1.DataProvider = provider;
 
-            provider.File = "C:\\Data\\FY3A_VIRRX_GBAL_L1_20090427_0255_1000M_MS.HDF";
+            provider.DataChange();
+        }
 
+        void provider_DataChanged(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
         }
         void InitSkinGallery()
         {
