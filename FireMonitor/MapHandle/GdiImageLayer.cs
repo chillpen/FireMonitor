@@ -87,6 +87,15 @@ namespace SharpMap.Layers
             SetEnvelope();
         }
 
+        public GdiImageLayer(string layerName, IDataProvider dataProvider)
+        {
+            InterpolationMode = InterpolationMode.HighQualityBicubic;
+
+            LayerName = layerName;
+
+            this.DataProvider = dataProvider;
+        }
+
         /// <summary>
         /// Method to set the <see cref="Envelope"/>
         /// </summary>
@@ -125,16 +134,18 @@ namespace SharpMap.Layers
                 m_DataProvider = value;
 
                 m_DataProvider.DataChanged += new EventHandler(On_DataProvider_DataChanged);
+
             }
         }
 
         void On_DataProvider_DataChanged(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
-            if(_image!=null)
+            if (_image != null)
                 _image.Dispose();
 
             _image = m_DataProvider.GetData();
+            SetEnvelope();
         }
 
         /// <summary>

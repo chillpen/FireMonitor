@@ -18,13 +18,25 @@ namespace MapHandle
             InitializeComponent();
         }
 
- 
-       
+
+
         public SharpMap.Forms.MapBox MapBox
         {
             get { return this.mapBox1; }
             //set { m_MapBox = value; }
         }
 
+        public IDataProvider DataProvider
+        {
+            set
+            {
+                GdiImageLayer gdilayer = new GdiImageLayer("Test", value);
+                this.mapBox1.Map.Layers.Add(gdilayer);
+
+
+                this.mapBox1.Map.ZoomToExtents();
+                this.mapBox1.Refresh();
+            }
+        }
     }
 }

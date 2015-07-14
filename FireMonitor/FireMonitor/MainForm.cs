@@ -12,7 +12,7 @@ using DevExpress.XtraBars;
 using DevExpress.XtraBars.Ribbon;
 using DevExpress.XtraBars.Helpers;
 using FireMonitor.DataProvider;
-
+using SharpMap.Layers;
 namespace FireMonitor
 {
     public partial class MainForm : RibbonForm
@@ -24,6 +24,11 @@ namespace FireMonitor
             InitGrid();
 
             FY3AVirrL1DataProvider provider = new FY3AVirrL1DataProvider();
+
+
+            this.imgDispCtrl1.DataProvider = provider;
+
+            provider.File = "C:\\Data\\FY3A_VIRRX_GBAL_L1_20090427_0255_1000M_MS.HDF";
 
         }
         void InitSkinGallery()

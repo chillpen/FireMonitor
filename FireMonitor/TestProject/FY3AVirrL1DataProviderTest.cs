@@ -2,7 +2,11 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Drawing;
-
+using MapHandle;
+using SharpMap.Forms;
+using System.Windows.Forms;
+using SharpMap.Layers;
+using SharpMap;
 namespace TestProject
 {
     
@@ -83,11 +87,30 @@ namespace TestProject
         {
             FY3AVirrL1DataProvider target = new FY3AVirrL1DataProvider(); // TODO: 初始化为适当的值
             target.File = "C:\\Data\\FY3A_VIRRX_GBAL_L1_20090427_0255_1000M_MS.HDF";
-            Bitmap expected = null; // TODO: 初始化为适当的值
-            Bitmap actual;
-            actual = target.GetData();
-            Assert.AreEqual(expected, actual);
+           // Bitmap expected = null; // TODO: 初始化为适当的值
+           // Bitmap actual;
+            //actual = target.GetData();
+            //Assert.AreEqual(expected, actual);
             //Assert.Inconclusive("验证此测试方法的正确性。");
+
+            ImgDispCtrlForm form = new ImgDispCtrlForm();
+            ImgDispCtrl imgDispCtrl = form.ImgDispCtrl; // TODO: 初始化为适当的值
+
+            MapBox mapBox;
+            mapBox = imgDispCtrl.MapBox;
+
+
+
+
+            GdiImageLayer gdilayer = new GdiImageLayer("C:\\Chrysanthemum.jpg", target);
+            mapBox.Map.Layers.Add(gdilayer);
+            //actual.Map.ZoomToBox(gdilayer.Envelope);
+
+            mapBox.Map.ZoomToExtents();
+            mapBox.Refresh();
+
+
+            Application.Run(form);
         }
 
         /// <summary>

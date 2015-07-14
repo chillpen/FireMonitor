@@ -5,7 +5,8 @@ using System.Text;
 using MapHandle;
 using HDF5DotNet;
 using FireMonitor.HDFOper;
-
+using System.Drawing.Imaging;
+using System.Drawing;
 
 namespace FireMonitor.DataProvider
 {
@@ -15,7 +16,7 @@ namespace FireMonitor.DataProvider
 
         public System.Drawing.Bitmap GetData()
         {
-            DatasetInfo datasetInfo = m_hdfOperator.GetDatasetInfo("EV_RefSB", "/"); 
+            DatasetInfo datasetInfo = m_hdfOperator.GetDatasetInfo("EV_RefSB", "/");
 
             int row = datasetInfo.row;
             int col = datasetInfo.col;
@@ -23,18 +24,38 @@ namespace FireMonitor.DataProvider
             int[, ,] datasetInt = new int[band, row, col];
 
             m_hdfOperator.GetDataset("EV_RefSB", "/", datasetInt, datasetInfo.type);
-            System.Drawing.Bitmap bmp = new System.Drawing.Bitmap(row,col);
+            System.Drawing.Bitmap bmp = new System.Drawing.Bitmap(row, col,PixelFormat.Format24bppRgb);
 
-            bmp.
 
-            for(int i =0;i<row;i++)
+
+            Rectangle rect = new Rectangle(0, 0, bmp.Width, bmp.Height);
+            System.Drawing.Imaging.BitmapData bmpData =
+                bmp.LockBits(rect, System.Drawing.Imaging.ImageLockMode.ReadWrite,
+                bmp.PixelFormat);
+
+            IntPtr ptr = bmpData.Scan0;
+
+            unsafe
             {
-                for (int j = 0; j < col; j++)
+                byte* p = (byte*)ptr;
+                int pixel = 0;
+
+                for (int i = 0; i < row; i++)
                 {
-                    //bmp.SetPixel(row, col, datasetInt[0, i, j]);
+                    for (int j = 0; j < col; j++)
+                    {
+                        int pixelCount = pixel << 2;
+                        byte pixelValue = (byte)(datasetInt[0, i, j] * 255 / 4096);
+                        *(p + pixelCount) = pixelValue;		//R
+                        *(p + pixelCount + 1) = pixelValue;	//G
+                        *(p + pixelCount + 2) = pixelValue;	//B
+
+                        pixel++;
+                    }
                 }
             }
-           
+
+
             return bmp;
         }
 
@@ -50,6 +71,7 @@ namespace FireMonitor.DataProvider
                 m_hdfOperator.Open(m_file);
             }
         }
+
 
 
     }
