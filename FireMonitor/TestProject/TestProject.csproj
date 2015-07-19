@@ -158,6 +158,7 @@
     </Compile>
     <Compile Include="ImgDispCtrlTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ShpOperatorTest.cs" />
     <Compile Include="UnitTest1.cs" />
   </ItemGroup>
   <ItemGroup>
