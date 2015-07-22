@@ -14,7 +14,7 @@ namespace MapHandle
     {
         config imgCon = new config();
         public IPalette Palette { get; set; }
-        public IDataProvider dataPro { get; set; }
+        public IImageDataProvider dataPro { get; set; }
         public uint[] data;
         
         public void getCFG(config inCFG)

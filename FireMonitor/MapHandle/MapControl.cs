@@ -452,7 +452,7 @@ namespace MapHandle
         [System.Runtime.InteropServices.DllImport("gdi32.dll")]
         public static extern bool DeleteObject(IntPtr hObject);
         //从内存加载图片
-        public void addGDIlayer(string layername, IDataProvider datapro, config cfg)
+        public void addGDIlayer(string layername, IImageDataProvider datapro, config cfg)
         {
             //delete existing same layer
             ILayer layer = this.mapBox.Map.GetLayerByName(layername);

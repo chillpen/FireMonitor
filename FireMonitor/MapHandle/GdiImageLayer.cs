@@ -87,13 +87,13 @@ namespace SharpMap.Layers
             SetEnvelope();
         }
 
-        public GdiImageLayer(string layerName, IDataProvider dataProvider)
+        public GdiImageLayer(string layerName, IImageDataProvider dataProvider)
         {
             InterpolationMode = InterpolationMode.HighQualityBicubic;
 
             LayerName = layerName;
 
-            this.DataProvider = dataProvider;
+            this.ImageDataProvider = dataProvider;
         }
 
         /// <summary>
@@ -125,29 +125,40 @@ namespace SharpMap.Layers
         }
 
 
-        private IDataProvider m_DataProvider;
+        private IImageDataProvider m_ImageDataProvider;
 
-        public IDataProvider DataProvider
+        public IImageDataProvider ImageDataProvider
         {
             set
             {
-                m_DataProvider = value;
+                m_ImageDataProvider = value;
 
-                m_DataProvider.DataChangedEvent += new EventHandler(On_DataProvider_DataChanged);
+                m_ImageDataProvider.ImageDataChangedEvent += new EventHandler(On_ImageDataProvider_DataChanged);
 
             }
         }
 
-        void On_DataProvider_DataChanged(object sender, EventArgs e)
+        void On_ImageDataProvider_DataChanged(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
             if (_image != null)
                 _image.Dispose();
 
-            _image = m_DataProvider.GetData();
+            _image = m_ImageDataProvider.GetData();
             SetEnvelope();
 
             
+        }
+
+
+        private IBorderDataProvider m_BorderDataProvider;
+
+        public IBorderDataProvider BorderDataProvider
+        {
+            set
+            {
+                m_BorderDataProvider = value;
+            }
         }
 
         /// <summary>
@@ -251,6 +262,11 @@ namespace SharpMap.Layers
             }
 
             base.Render(g, map);
+        }
+
+        private void RenderBorder(Graphics g, Map map)
+        {
+
         }
 
         /// <summary>

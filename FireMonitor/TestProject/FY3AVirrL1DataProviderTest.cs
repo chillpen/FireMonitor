@@ -9,8 +9,8 @@ using SharpMap.Layers;
 using SharpMap;
 namespace TestProject
 {
-    
-    
+
+
     /// <summary>
     ///这是 FY3AVirrL1DataProviderTest 的测试类，旨在
     ///包含所有 FY3AVirrL1DataProviderTest 单元测试
@@ -76,7 +76,7 @@ namespace TestProject
         public void FY3AVirrL1DataProviderConstructorTest()
         {
             FY3AVirrL1DataProvider target = new FY3AVirrL1DataProvider();
-           // Assert.Inconclusive("TODO: 实现用来验证目标的代码");
+            // Assert.Inconclusive("TODO: 实现用来验证目标的代码");
         }
 
         /// <summary>
@@ -86,31 +86,16 @@ namespace TestProject
         public void GetDataTest()
         {
             FY3AVirrL1DataProvider target = new FY3AVirrL1DataProvider(); // TODO: 初始化为适当的值
-            target.File = "C:\\Data\\FY3A_VIRRX_GBAL_L1_20090427_0255_1000M_MS.HDF";
-           // Bitmap expected = null; // TODO: 初始化为适当的值
-           // Bitmap actual;
-            //actual = target.GetData();
-            //Assert.AreEqual(expected, actual);
-            //Assert.Inconclusive("验证此测试方法的正确性。");
+            target.L1File = "C:\\Data\\FY3A_VIRRX_GBAL_L1_20090427_0255_1000M_MS.HDF";
+            Color expected = Color.FromArgb(255, 47, 47, 47); // TODO: 初始化为适当的值
 
-            ImgDispCtrlForm form = new ImgDispCtrlForm();
-            ImgDispCtrl imgDispCtrl = form.ImgDispCtrl; // TODO: 初始化为适当的值
+            Bitmap actual;
+            actual = target.GetData();
 
-            MapBox mapBox;
-            mapBox = imgDispCtrl.MapBox;
+            Color color = actual.GetPixel(500, 500);
 
+            Assert.AreEqual(expected, color);
 
-
-
-            GdiImageLayer gdilayer = new GdiImageLayer("C:\\Chrysanthemum.jpg", target);
-            mapBox.Map.Layers.Add(gdilayer);
-            //actual.Map.ZoomToBox(gdilayer.Envelope);
-
-            mapBox.Map.ZoomToExtents();
-            mapBox.Refresh();
-
-
-            Application.Run(form);
         }
 
         /// <summary>
@@ -121,8 +106,40 @@ namespace TestProject
         {
             FY3AVirrL1DataProvider target = new FY3AVirrL1DataProvider(); // TODO: 初始化为适当的值
             string expected = string.Empty; // TODO: 初始化为适当的值
-            target.File = expected;
-           // Assert.Inconclusive("无法验证只写属性。");
+            target.L1File = expected;
+            Assert.Inconclusive("无法验证只写属性。");
         }
+
+        /// <summary>
+        ///ReadLonlat 的测试
+        ///</summary>
+        [TestMethod()]
+        [DeploymentItem("FireMonitor.exe")]
+        public void ReadLonTest()
+        {
+
+
+            FY3AVirrL1DataProvider provider = new FY3AVirrL1DataProvider();
+            PrivateObject param0 = new PrivateObject(provider); // TODO: 初始化为适当的值
+            FY3AVirrL1DataProvider_Accessor target = new FY3AVirrL1DataProvider_Accessor(param0); // TODO: 初始化为适当的值
+            target.L1File = "C:\\Data\\FY3A_VIRRX_GBAL_L1_20090427_0255_1000M_MS.HDF";
+
+            float[, ,] lon = target.ReadLon();
+
+            bool ret = false;
+
+            if (lon.Length > 0 && lon[0, 0, 1] != 0)
+                ret = true;
+
+            Assert.AreEqual(ret, true);
+            //Assert.Inconclusive("无法验证不返回值的方法。");
+        }
+
+
+        /// <summary>
+        /// 的测试
+        ///</summary>
+        [TestMethod()]
+        //public void 
     }
 }

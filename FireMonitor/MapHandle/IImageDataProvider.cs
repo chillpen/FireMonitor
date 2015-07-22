@@ -5,11 +5,11 @@ using System.Text;
 
 namespace MapHandle
 {
-    public interface IDataProvider
+    public interface IImageDataProvider
     {
         System.Drawing.Bitmap GetData();
 
-        event EventHandler DataChangedEvent;
+        event EventHandler ImageDataChangedEvent;
 
         void DataChange();
     }

@@ -10,7 +10,7 @@ using System.Drawing;
 
 namespace FireMonitor.DataProvider
 {
-    public class FY3AVirrL1DataProvider : IDataProvider
+    public class FY3AVirrL1DataProvider : IImageDataProvider
     {
         private HDFOperator m_hdfOperator = new HDFOperator();
 
@@ -24,7 +24,7 @@ namespace FireMonitor.DataProvider
             int[, ,] datasetInt = new int[band, row, col];
 
             m_hdfOperator.GetDataset("EV_RefSB", "/", datasetInt, datasetInfo.type);
-            System.Drawing.Bitmap bmp = new System.Drawing.Bitmap(col, row,PixelFormat.Format24bppRgb);
+            System.Drawing.Bitmap bmp = new System.Drawing.Bitmap(col, row, PixelFormat.Format24bppRgb);
 
 
 
@@ -44,7 +44,7 @@ namespace FireMonitor.DataProvider
                 {
                     for (int j = 0; j < col; j++)
                     {
-                        int pixelCount = pixel*3;
+                        int pixelCount = pixel * 3;
                         byte pixelValue = (byte)(datasetInt[1, i, j] * 255 / 1024);
                         *(p + pixelCount) = pixelValue;		//R
                         *(p + pixelCount + 1) = pixelValue;	//G
@@ -59,25 +59,70 @@ namespace FireMonitor.DataProvider
             return bmp;
         }
 
-        public event EventHandler DataChangedEvent;
+        public event EventHandler ImageDataChangedEvent;
 
         public void DataChange()
         {
-            if (this.DataChangedEvent != null)
-                this.DataChangedEvent(this, null);
+            if (this.ImageDataChangedEvent != null)
+                this.ImageDataChangedEvent(this, null);
         }
 
-        private string m_file;
-        public string File
+        private string m_L1file;
+        public string L1File
         {
             set
             {
                 m_hdfOperator.Close();
-                m_file = value;
-                m_hdfOperator.Open(m_file);
+                m_L1file = value;
+                m_hdfOperator.Open(m_L1file);
             }
         }
 
+        private float[, ,] m_lon;
+        private float[, ,] ReadLon()
+        {
+            DatasetInfo datasetInfo = m_hdfOperator.GetDatasetInfo("Longitude", "/");
+
+            int row = datasetInfo.row;
+            int col = datasetInfo.col;
+            int band = datasetInfo.band;
+            float[, ,] datasetFloat = new float[band, row, col];
+
+            m_hdfOperator.GetDataset("Longitude", "/", datasetFloat, datasetInfo.type);
+
+            return datasetFloat;
+        }
+
+        private float[, ,] m_lat;
+        private float[, ,] ReadLat()
+        {
+            DatasetInfo datasetInfo = m_hdfOperator.GetDatasetInfo("Latitude", "/");
+
+            int row = datasetInfo.row;
+            int col = datasetInfo.col;
+            int band = datasetInfo.band;
+            float[, ,] datasetFloat = new float[band, row, col];
+
+            m_hdfOperator.GetDataset("Latitude", "/", datasetFloat, datasetInfo.type);
+
+            return datasetFloat;
+        }
+
+
+        
+        
+        //private List<bool> m_BorderPts = new List<bool>();
+
+        //private void GetBorder()
+        //{
+        //    m_lat = ReadLat();
+        //    int size = m_lat.Length;
+
+        //    for (int i = 0; i < size; i++)
+        //    {
+                
+        //    }
+        //}
 
 
     }

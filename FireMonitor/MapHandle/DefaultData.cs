@@ -5,7 +5,7 @@ using System.Text;
 
 namespace MapHandle
 {
-    class DefaultData:IDataProvider
+    class DefaultData:IImageDataProvider
     {
         //public System.Drawing.Bitmap[] bmp;
         public System.Drawing.Bitmap GetData()
@@ -25,7 +25,7 @@ namespace MapHandle
             return bmp;
         }
 
-        public event EventHandler DataChangedEvent;
+        public event EventHandler ImageDataChangedEvent;
 
         public void DataChange()
         {

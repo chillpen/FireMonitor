@@ -141,8 +141,9 @@
     <Compile Include="DefaultData.cs" />
     <Compile Include="DefaultPalette.cs" />
     <Compile Include="GdiImageLayer.cs" />
+    <Compile Include="IBorderDataProvider.cs" />
     <Compile Include="ImageGDILayer.cs" />
-    <Compile Include="IDataProvider.cs" />
+    <Compile Include="IImageDataProvider.cs" />
     <Compile Include="ImageLayer.cs" />
     <Compile Include="ImgDispCtrl.cs">
       <SubType>UserControl</SubType>

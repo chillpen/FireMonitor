@@ -208,7 +208,7 @@ namespace MapHandle
             mapControl1.setShpLayer(layername, color, width);
         }
 
-        public void SetImageLayer(IDataProvider provider)
+        public void SetImageLayer(IImageDataProvider provider)
         {
             imglayer.dataPro = provider;
         }
@@ -231,7 +231,7 @@ namespace MapHandle
             mapControl1.addGDIlayer(layername,filepath,incfg);
         }
 
-        public void addgdilayer(string layername, IDataProvider datapro, config incfg)
+        public void addgdilayer(string layername, IImageDataProvider datapro, config incfg)
         {
             //config cfg = getCoordinate(incfg);
             Envelope en = new Envelope(incfg.minX, incfg.maxX, incfg.minY, incfg.maxY);
