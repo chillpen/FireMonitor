@@ -63,6 +63,7 @@ namespace TestProject
         //
         #endregion
 
+        private string TestDataDir = "c:\\FireMonTestData";
 
         /// <summary>
         ///ReadShpFile 的测试
@@ -71,12 +72,12 @@ namespace TestProject
         public void ReadShpFileTest()
         {
             ShpOperator target = new ShpOperator(); // TODO: 初始化为适当的值
-            string fileName = "c:\\data\\province.shp";
-            bool expected = false; // TODO: 初始化为适当的值
+            string fileName = TestDataDir+"\\province.shp";
+            bool expected = true; // TODO: 初始化为适当的值
             bool actual;
             actual = target.ReadShpFile(fileName);
             
-           // Assert.AreEqual(expected, actual);
+            Assert.AreEqual(expected, actual);
            // Assert.Inconclusive("验证此测试方法的正确性。");
         }
 

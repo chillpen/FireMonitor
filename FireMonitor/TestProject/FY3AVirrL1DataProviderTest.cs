@@ -68,7 +68,7 @@ namespace TestProject
         //
         #endregion
 
-
+        private string TestDataDir = "c:\\FireMonTestData";
         /// <summary>
         ///FY3AVirrL1DataProvider 构造函数 的测试
         ///</summary>
@@ -86,7 +86,7 @@ namespace TestProject
         public void GetDataTest()
         {
             FY3AVirrL1DataProvider target = new FY3AVirrL1DataProvider(); // TODO: 初始化为适当的值
-            target.L1File = "C:\\Data\\FY3A_VIRRX_GBAL_L1_20090427_0255_1000M_MS.HDF";
+            target.L1File = TestDataDir + "\\FY3A_VIRRX_GBAL_L1_20090427_0255_1000M_MS.HDF";
             Color expected = Color.FromArgb(255, 47, 47, 47); // TODO: 初始化为适当的值
 
             Bitmap actual;
@@ -122,7 +122,7 @@ namespace TestProject
             FY3AVirrL1DataProvider provider = new FY3AVirrL1DataProvider();
             PrivateObject param0 = new PrivateObject(provider); // TODO: 初始化为适当的值
             FY3AVirrL1DataProvider_Accessor target = new FY3AVirrL1DataProvider_Accessor(param0); // TODO: 初始化为适当的值
-            target.L1File = "C:\\Data\\FY3A_VIRRX_GBAL_L1_20090427_0255_1000M_MS.HDF";
+            target.L1File =TestDataDir+"\\FY3A_VIRRX_GBAL_L1_20090427_0255_1000M_MS.HDF";
 
             float[, ,] lon = target.ReadLon();
 
@@ -139,7 +139,43 @@ namespace TestProject
         /// <summary>
         /// 的测试
         ///</summary>
-        [TestMethod()]
+        // [TestMethod()]
         //public void 
+
+        /// <summary>
+        ///CreateBorder 的测试
+        ///</summary>
+        [TestMethod()]
+        [DeploymentItem("FireMonitor.exe")]
+        public void CreateBorderTest()
+        {
+            FY3AVirrL1DataProvider_Accessor provider = new FY3AVirrL1DataProvider_Accessor(); // TODO: 初始化为适当的值
+            PrivateObject param0 = new PrivateObject(provider); // TODO: 初始化为适当的值
+            FY3AVirrL1DataProvider_Accessor target = new FY3AVirrL1DataProvider_Accessor(param0); // TODO: 初始化为适当的值
+            target.ProvinceShpFile = TestDataDir+"\\province.shp";
+            bool ret = target.CreateBorder();
+
+            Assert.AreEqual(ret, true);
+            //Assert.Inconclusive("无法验证不返回值的方法。");
+        }
+
+        /// <summary>
+        ///FixLonLatBox 的测试
+        ///</summary>
+        [TestMethod()]
+        [DeploymentItem("FireMonitor.exe")]
+        public void FixLonLatBoxTest()
+        {
+            FY3AVirrL1DataProvider_Accessor provider = new FY3AVirrL1DataProvider_Accessor(); // TODO: 初始化为适当的值
+            PrivateObject param0 = new PrivateObject(provider); // TODO: 初始化为适当的值
+            FY3AVirrL1DataProvider_Accessor target = new FY3AVirrL1DataProvider_Accessor(param0); // TODO: 初始化为适当的值
+            target.L1File = TestDataDir + "\\FY3A_VIRRX_GBAL_L1_20090427_0255_1000M_MS.HDF";
+            RectangleF expected = new RectangleF((float)98.94003, (float)30.10315, (float)39.72882, (float)21.90414); // TODO: 初始化为适当的值
+            RectangleF actual;
+            actual = target.FixLonLatBox();
+
+            Assert.AreEqual(expected, actual);
+            Assert.Inconclusive("验证此测试方法的正确性。");
+        }
     }
 }

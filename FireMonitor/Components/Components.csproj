@@ -146,6 +146,9 @@
     <None Include="hdf5_hldll.lib">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="province.shp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="szip.lib">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
