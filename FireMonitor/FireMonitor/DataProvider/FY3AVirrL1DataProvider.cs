@@ -160,15 +160,31 @@ namespace FireMonitor.DataProvider
 
             int polygonCnt = shpOper.Polygons.Count;
 
+            float gridStep = 0.001f;
+
+            RectangleF lonlatBox = FixLonLatBox();
+
             for (int i = 0; i < polygonCnt; i++)
             {
                 Polygon_shape shape = shpOper.Polygons[i];
+
+                RectangleF shapeRect = new RectangleF();
+                shapeRect.X = (float)shape.Box[0];
+                shapeRect.Y = (float)shape.Box[1];
+                shapeRect.Height = (float)shape.Box[3] - (float)shape.Box[1];
+                shapeRect.Width = (float)shape.Box[2] - (float)shape.Box[0];
+
+                if (lonlatBox.IntersectsWith(shapeRect))
+                {
+                   // return true;
+                }
+
                 //shape.
             }
-            return true;
+            return false;
         }
 
-        private RectangleF m_LonLatBox = new RectangleF();
+        //private RectangleF m_LonLatBox = new RectangleF();
 
         private RectangleF FixLonLatBox()
         {
@@ -205,6 +221,8 @@ namespace FireMonitor.DataProvider
 
             return lonlatbox;
         }
+
+
 
         //private List<bool> m_BorderPts = new List<bool>();
 
