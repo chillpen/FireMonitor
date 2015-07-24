@@ -14,9 +14,17 @@ namespace MapHandle
     public partial class ImgDispCtrl : UserControl
     {
         private IImageDataProvider m_dataProvider = null;
+        private IBorderDataProvider m_BorderDataProvider = null;
+
+        private GdiImageLayer m_GdiImageLayer = new GdiImageLayer();
         public ImgDispCtrl()
         {
             InitializeComponent();
+            m_GdiImageLayer.Enabled = false;
+            this.mapBox1.Map.Layers.Add(m_GdiImageLayer);
+
+
+            
         }
 
 
@@ -32,15 +40,39 @@ namespace MapHandle
             set
             {
                 m_dataProvider = value;
-                GdiImageLayer gdilayer = new GdiImageLayer("Data", m_dataProvider);
-                this.mapBox1.Map.Layers.Add(gdilayer);
+               // GdiImageLayer gdilayer = new GdiImageLayer("Data", m_dataProvider);
+                m_GdiImageLayer.ImageDataProvider = m_dataProvider;
+                
                 m_dataProvider.ImageDataChangedEvent += new EventHandler(m_dataProvider_DataChangedEvent);
 
             }
         }
 
+        public IBorderDataProvider BorderDataProvider
+        {
+            set
+            {
+                m_BorderDataProvider = value;
+                //GdiImageLayer gdilayer = new GdiImageLayer("Data", m_dataProvider);
+               // this.mapBox1.Map.Layers.Add(m_BorderDataProvider);
+                m_GdiImageLayer.BorderDataProvider = m_BorderDataProvider;
+               // m_dataProvider.ImageDataChangedEvent += new EventHandler(m_dataProvider_DataChangedEvent);
+
+            }
+        }
+
+
+        public void EnableGdiLayerRender()
+        {
+            m_GdiImageLayer.Enabled = true;
+            this.mapBox1.Map.ZoomToExtents();
+            this.mapBox1.Refresh();
+        }
+
         void m_dataProvider_DataChangedEvent(object sender, EventArgs e)
         {
+            //this.mapBox1.Map.z;
+           
             this.mapBox1.Map.ZoomToExtents();
             this.mapBox1.Refresh();
         }

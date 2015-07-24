@@ -12,7 +12,12 @@ using System.Windows.Forms;
 
 namespace FireMonitor.DataProvider
 {
+    public struct GridPt
+    {
+        public int X;
+        public int Y;
 
+    }
 
     public class FY3AVirrL1DataProvider : IImageDataProvider, IBorderDataProvider
     {
@@ -87,6 +92,7 @@ namespace FireMonitor.DataProvider
                 m_L1file = value;
                 m_hdfOperator.Open(m_L1file);
                 ReadHdfFile();
+                CreateBorder();
             }
         }
 
@@ -134,17 +140,17 @@ namespace FireMonitor.DataProvider
         }
 
 
-        private List<PointF> m_PolygonPts = null;
+        private List<Point[]> m_PolygonPts = new List<Point[]>();
 
-        public List<PointF> PolygonPts { get { return m_PolygonPts; } }
+        public List<Point[]> PolygonPts { get { return m_PolygonPts; } }
 
-        private List<PointF> m_PolyLinePts = null;
+        private List<Point> m_PolyLinePts = null;
 
-        public List<PointF> PolyLinePts { get { return m_PolyLinePts; } }
+        public List<Point> PolyLinePts { get { return m_PolyLinePts; } }
 
-        private List<PointF> m_Points = null;
+        private List<Point> m_Points = null;
 
-        public List<PointF> Points { get { return m_Points; } }
+        public List<Point> Points { get { return m_Points; } }
 
 
         private string m_provinceShpFile = Application.StartupPath + "\\province.shp";
@@ -160,9 +166,28 @@ namespace FireMonitor.DataProvider
 
             int polygonCnt = shpOper.Polygons.Count;
 
-            float gridStep = 0.001f;
+            float gridStep = 0.01f;
 
             RectangleF lonlatBox = FixLonLatBox();
+
+            int widthPts = (int)(lonlatBox.Width / gridStep) + 1;
+            int heightPts = (int)(lonlatBox.Height / gridStep) + 1;
+
+
+            GridPt[,] grid = new GridPt[widthPts, heightPts];
+
+            for (int ystart = 0; ystart < m_lonInfo.row; ystart++)
+            {
+                for (int xstart = 0; xstart < m_lonInfo.col; xstart++)
+                {
+                    int xIndex = (int)((m_lon[0, ystart, xstart] - lonlatBox.X) / gridStep);
+                    int yIndex = (int)((m_lat[0, ystart, xstart] - lonlatBox.Y) / gridStep);
+
+                    grid[xIndex, yIndex].Y = ystart;
+                    grid[xIndex, yIndex].X = xstart;
+                }
+            }
+
 
             for (int i = 0; i < polygonCnt; i++)
             {
@@ -176,11 +201,35 @@ namespace FireMonitor.DataProvider
 
                 if (lonlatBox.IntersectsWith(shapeRect))
                 {
-                   // return true;
+                    //return true;
+                    List<Point> polygonPts = new List<Point>();
+                    for (int j = 0; j < shape.NumPoints; j++)
+                    {
+                        //if(shape.Points[j])
+                        int xIndex = (int)((shape.Points[j].X - lonlatBox.X) / gridStep);
+                        int yIndex = (int)((shape.Points[j].Y - lonlatBox.Y) / gridStep);
+
+                        if (xIndex <= 0 || yIndex <= 0 || xIndex >= widthPts || yIndex >= heightPts)
+                            continue;
+
+                        if (grid[xIndex, yIndex].X == 0 && grid[xIndex, yIndex].Y == 0)
+                            continue;
+
+                        polygonPts.Add(new Point(grid[xIndex, yIndex].X, grid[xIndex, yIndex].Y));
+                        //m_PolygonPts.
+
+                        //grid[xIndex,yIndex]
+                    }
+
+                    if (polygonPts.Count > 0)
+                        m_PolygonPts.Add(polygonPts.ToArray());
+
                 }
 
                 //shape.
             }
+
+
             return false;
         }
 
@@ -195,7 +244,7 @@ namespace FireMonitor.DataProvider
             float maxLat = m_lat[0, 0, 0];
             float minLat = m_lat[0, 0, 0];
 
-            for (int i = 0; i < m_lonInfo.row; i++)
+            for (int i = 0; i < m_lonInfo.row; i++)//lonlat的最大值因该在边缘，优化考虑
             {
                 for (int j = 0; j < m_lonInfo.col; j++)
                 {
@@ -222,6 +271,10 @@ namespace FireMonitor.DataProvider
             return lonlatbox;
         }
 
+        private void CreateGrid()
+        {
+
+        }
 
 
         //private List<bool> m_BorderPts = new List<bool>();

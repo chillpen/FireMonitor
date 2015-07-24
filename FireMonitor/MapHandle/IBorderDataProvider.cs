@@ -9,11 +9,11 @@ namespace MapHandle
 {
     public interface IBorderDataProvider
     {
-        List<PointF> PolygonPts { get; }
+        List<Point[]> PolygonPts { get; }
 
-        List<PointF> PolyLinePts { get; }
+        List<Point> PolyLinePts { get; }
 
-        List<PointF> Points { get; }
+        List<Point> Points { get; }
     }
 
 }

@@ -87,13 +87,13 @@ namespace SharpMap.Layers
             SetEnvelope();
         }
 
-        public GdiImageLayer(string layerName, IImageDataProvider dataProvider)
+        public GdiImageLayer()
         {
             InterpolationMode = InterpolationMode.HighQualityBicubic;
 
-            LayerName = layerName;
+            LayerName = "ImageLayer";
 
-            this.ImageDataProvider = dataProvider;
+            //this.ImageDataProvider = dataProvider;
         }
 
         /// <summary>
@@ -125,7 +125,7 @@ namespace SharpMap.Layers
         }
 
 
-        private IImageDataProvider m_ImageDataProvider;
+        private IImageDataProvider m_ImageDataProvider=null;
 
         public IImageDataProvider ImageDataProvider
         {
@@ -151,7 +151,7 @@ namespace SharpMap.Layers
         }
 
 
-        private IBorderDataProvider m_BorderDataProvider;
+        private IBorderDataProvider m_BorderDataProvider = null;
 
         public IBorderDataProvider BorderDataProvider
         {
@@ -213,6 +213,9 @@ namespace SharpMap.Layers
             if (_image == null)
                 throw new Exception("Image not set");
 
+            if (m_BorderDataProvider == null || m_ImageDataProvider == null)
+                return;
+
             // Style enabled?
             var doRender = Style.Enabled;
 
@@ -256,6 +259,14 @@ namespace SharpMap.Layers
                         GraphicsUnit.Pixel, ia);
                 }
 
+                Pen pen = new Pen(Color.Yellow);
+
+                foreach (Point[] pts in m_BorderDataProvider.PolygonPts)
+                {
+                    g.DrawPolygon(pen, pts);
+                    
+
+                }
                 // reset the interpolation mode
                 g.InterpolationMode = tmpInterpolationMode;
 

@@ -29,8 +29,11 @@ namespace FireMonitor
            
             provider.L1File = "C:\\Data\\FY3A_VIRRX_GBAL_L1_20090427_0255_1000M_MS.HDF";
             this.imgDispCtrl1.DataProvider = provider;
-
+            this.imgDispCtrl1.BorderDataProvider = provider;
+            
             provider.DataChange();
+
+            this.imgDispCtrl1.EnableGdiLayerRender();
         }
 
         void provider_DataChanged(object sender, EventArgs e)
