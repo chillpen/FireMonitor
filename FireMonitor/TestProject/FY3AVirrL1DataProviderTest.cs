@@ -83,14 +83,21 @@ namespace TestProject
         ///GetData 的测试
         ///</summary>
         [TestMethod()]
+        [DeploymentItem("FireMonitor.exe")]
         public void GetDataTest()
         {
-            FY3AVirrL1DataProvider target = new FY3AVirrL1DataProvider(); // TODO: 初始化为适当的值
+
+            FY3AVirrL1DataProvider provider = new FY3AVirrL1DataProvider();
+            PrivateObject param0 = new PrivateObject(provider); // TODO: 初始化为适当的值
+            FY3AVirrL1DataProvider_Accessor target = new FY3AVirrL1DataProvider_Accessor(param0); // TODO: 初始化为适当的值
+
+
+           // FY3AVirrL1DataProvider target = new FY3AVirrL1DataProvider(); // TODO: 初始化为适当的值
             target.L1File = TestDataDir + "\\FY3A_VIRRX_GBAL_L1_20090427_0255_1000M_MS.HDF";
             Color expected = Color.FromArgb(255, 47, 47, 47); // TODO: 初始化为适当的值
 
             Bitmap actual;
-            actual = target.GetData();
+            actual = target.CreateImageData();
 
             Color color = actual.GetPixel(500, 500);
 

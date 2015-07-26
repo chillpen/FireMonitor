@@ -138,13 +138,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="config.cs" />
-    <Compile Include="DefaultData.cs" />
     <Compile Include="DefaultPalette.cs" />
     <Compile Include="GdiImageLayer.cs" />
     <Compile Include="IBorderDataProvider.cs" />
     <Compile Include="ImageGDILayer.cs" />
     <Compile Include="IImageDataProvider.cs" />
-    <Compile Include="ImageLayer.cs" />
     <Compile Include="ImgDispCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -155,18 +153,6 @@
     <Compile Include="PointsBuilder\RandomPointsBuilder.cs" />
     <Compile Include="Projection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="MapControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="MapControl.Designer.cs">
-      <DependentUpon>MapControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="MainControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="MainControl.Designer.cs">
-      <DependentUpon>MainControl.cs</DependentUpon>
-    </Compile>
     <Compile Include="Selection\DisplayModel.cs" />
     <Compile Include="Selection\DispSelectRect.cs" />
     <Compile Include="Selection\ISelectRegion.cs" />
@@ -179,13 +165,6 @@
   <ItemGroup>
     <EmbeddedResource Include="ImgDispCtrl.resx">
       <DependentUpon>ImgDispCtrl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MapControl.resx">
-      <DependentUpon>MapControl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MainControl.resx">
-      <DependentUpon>MainControl.cs</DependentUpon>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -23,8 +23,15 @@ namespace MapHandle
             m_GdiImageLayer.Enabled = false;
             this.mapBox1.Map.Layers.Add(m_GdiImageLayer);
 
-
+            this.mapBox1.MouseClick += new MouseEventHandler(mapBox1_MouseClick);
             
+        }
+
+        void mapBox1_MouseClick(object sender, MouseEventArgs e)
+        {
+            //throw new NotImplementedException();
+            Point pt = e.Location;
+           // this.mapBox1.c
         }
 
 
@@ -43,7 +50,7 @@ namespace MapHandle
                // GdiImageLayer gdilayer = new GdiImageLayer("Data", m_dataProvider);
                 m_GdiImageLayer.ImageDataProvider = m_dataProvider;
                 
-                m_dataProvider.ImageDataChangedEvent += new EventHandler(m_dataProvider_DataChangedEvent);
+               // m_dataProvider.ImageDataChangedEvent += new EventHandler(m_dataProvider_DataChangedEvent);
 
             }
         }
@@ -69,12 +76,12 @@ namespace MapHandle
             this.mapBox1.Refresh();
         }
 
-        void m_dataProvider_DataChangedEvent(object sender, EventArgs e)
-        {
-            //this.mapBox1.Map.z;
+        //void m_dataProvider_DataChangedEvent(object sender, EventArgs e)
+        //{
+        //    //this.mapBox1.Map.z;
            
-            this.mapBox1.Map.ZoomToExtents();
-            this.mapBox1.Refresh();
-        }
+        //    this.mapBox1.Map.ZoomToExtents();
+        //    this.mapBox1.Refresh();
+        //}
     }
 }

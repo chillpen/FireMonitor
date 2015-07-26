@@ -103,6 +103,7 @@ namespace SharpMap.Layers
         {
             _worldFile = _worldFile ?? new WorldFile(1, 0, 0, -1, 0, _image.Height);
             _envelope = _worldFile.ToGroundBounds(_image.Width, _image.Height).EnvelopeInternal;
+
         }
 
         /// <summary>
@@ -125,7 +126,7 @@ namespace SharpMap.Layers
         }
 
 
-        private IImageDataProvider m_ImageDataProvider=null;
+        private IImageDataProvider m_ImageDataProvider = null;
 
         public IImageDataProvider ImageDataProvider
         {
@@ -133,7 +134,12 @@ namespace SharpMap.Layers
             {
                 m_ImageDataProvider = value;
 
-                m_ImageDataProvider.ImageDataChangedEvent += new EventHandler(On_ImageDataProvider_DataChanged);
+                //Image = m_ImageDataProvider.Image;
+                _image = m_ImageDataProvider.Image;
+
+               // m_ImageDataProvider.ImageDataChangedEvent += new EventHandler(On_ImageDataProvider_DataChanged);
+                SetEnvelope();
+                
 
             }
         }
@@ -144,10 +150,10 @@ namespace SharpMap.Layers
             if (_image != null)
                 _image.Dispose();
 
-            _image = m_ImageDataProvider.GetData();
+            _image = m_ImageDataProvider.Image;
             SetEnvelope();
 
-            
+
         }
 
 
@@ -223,6 +229,8 @@ namespace SharpMap.Layers
             if (map.Zoom < Style.MinVisible || Style.MaxVisible < map.Zoom)
                 doRender = false;
 
+        
+
             // View to render
             var mapView = map.Envelope;
 
@@ -255,26 +263,62 @@ namespace SharpMap.Layers
                     ia.SetColorMatrix(new ColorMatrix { Matrix44 = 1 - Transparency },
                         ColorMatrixFlag.Default, ColorAdjustType.Bitmap);
 
+                    mapRect.X = 0;
+                    mapRect.Y = 0;
+
                     g.DrawImage(_image, mapRect, imgRect.X, imgRect.Y, imgRect.Width, imgRect.Height,
                         GraphicsUnit.Pixel, ia);
+                    //g.DrawImage(_image, imgRect, imgRect.X, imgRect.Y, imgRect.Width, imgRect.Height,
+                    //    GraphicsUnit.Pixel, ia);
                 }
 
                 Pen pen = new Pen(Color.Yellow);
-
+                bool bMapRectChanged = !m_CurrentMapRect.Equals(mapRect);
+                bMapRectChanged = true;
                 foreach (Point[] pts in m_BorderDataProvider.PolygonPts)
+                // int cnt = m_BorderDataProvider.PolygonPts.Count;s
+                //for (int i = 0; i < cnt; i++)
                 {
-                    g.DrawPolygon(pen, pts);
-                    
+
+                    if (bMapRectChanged)
+                    {
+                        int cnt = pts.Length;
+
+                        List<Point> drawPts = new List<Point>();
+                        for (int i = 0; i < cnt; i++)
+                        // foreach (Point pt in pts)
+                        {
+                            Point pt = pts[i];
+
+                            //if (imgRect.Contains(pt))
+                            {
+                                Point drawpt = new Point();
+                                drawpt.X = (pt.X - imgRect.X) * mapRect.Width / imgRect.Width + mapRect.X;
+                                drawpt.Y = (pt.Y - imgRect.Y) * mapRect.Height / imgRect.Height + mapRect.Y;
+                                drawPts.Add(drawpt);
+                            }
+                            //drawPts[i].X = (pt.X - imgRect.X) * mapRect.Width / m_BorderDataProvider.BorderImgWidth + mapRect.X;
+                            //drawPts[i].Y = (pt.Y - imgRect.Y) * mapRect.Height / m_BorderDataProvider.BorderImgHeight + mapRect.Y;
+                        }
+
+                        if (drawPts.Count > 0)
+                            g.DrawLines(pen, drawPts.ToArray());
+                    }
+
+                    //g.DrawLines(pen, m_BorderDataProvider.PolygonPts[i]);
 
                 }
-                // reset the interpolation mode
+                // reset the interpolation mo de
                 g.InterpolationMode = tmpInterpolationMode;
 
+                if (bMapRectChanged)
+                    m_CurrentMapRect = mapRect;
             }
 
             base.Render(g, map);
         }
 
+        private Rectangle m_CurrentMapRect;
         private void RenderBorder(Graphics g, Map map)
         {
 

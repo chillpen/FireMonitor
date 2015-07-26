@@ -7,10 +7,12 @@ namespace MapHandle
 {
     public interface IImageDataProvider
     {
-        System.Drawing.Bitmap GetData();
+        //System.Drawing.Bitmap CreateImageData();
+
+        System.Drawing.Bitmap Image { get; }
 
         event EventHandler ImageDataChangedEvent;
 
-        void DataChange();
+        void OnDataChange();
     }
 }

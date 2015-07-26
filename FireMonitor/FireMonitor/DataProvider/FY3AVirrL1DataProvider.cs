@@ -23,16 +23,9 @@ namespace FireMonitor.DataProvider
     {
         private HDFOperator m_hdfOperator = new HDFOperator();
 
-        public System.Drawing.Bitmap GetData()//todo:需要重构为属性模式，将生成图像部分提成函数，修改相应的Iprovider
+        private System.Drawing.Bitmap CreateImageData()//todo:需要重构为属性模式，将生成图像部分提成函数，修改相应的Iprovider
         {
-            //DatasetInfo datasetInfo = m_hdfOperator.GetDatasetInfo("EV_RefSB", "/");
 
-            //int row = datasetInfo.row;
-            //int col = datasetInfo.col;
-            //int band = datasetInfo.band;
-            //int[, ,] datasetInt = new int[band, row, col];
-
-            //m_hdfOperator.GetDataset("EV_RefSB", "/", datasetInt, datasetInfo.type);
             System.Drawing.Bitmap bmp = new System.Drawing.Bitmap(m_EVInfo.col, m_EVInfo.row, PixelFormat.Format24bppRgb);
 
 
@@ -68,6 +61,16 @@ namespace FireMonitor.DataProvider
             return bmp;
         }
 
+        private System.Drawing.Bitmap m_Image = new Bitmap(1, 1);
+        public System.Drawing.Bitmap Image
+        {
+            get
+            {
+                m_Image = this.CreateImageData();
+                return m_Image;
+            }
+        }
+
         private void ReadHdfFile()
         {
             m_lon = ReadLon();
@@ -77,7 +80,7 @@ namespace FireMonitor.DataProvider
 
         public event EventHandler ImageDataChangedEvent;
 
-        public void DataChange()
+        public void OnDataChange()
         {
             if (this.ImageDataChangedEvent != null)
                 this.ImageDataChangedEvent(this, null);
@@ -221,7 +224,7 @@ namespace FireMonitor.DataProvider
                         //grid[xIndex,yIndex]
                     }
 
-                    if (polygonPts.Count > 0)
+                    if (polygonPts.Count > 3)
                         m_PolygonPts.Add(polygonPts.ToArray());
 
                 }
@@ -230,9 +233,24 @@ namespace FireMonitor.DataProvider
             }
 
 
+            m_BorderImgWidth = m_latInfo.col;
+            m_BorderImgHeight = m_latInfo.row;
             return false;
         }
 
+        private int m_BorderImgWidth = 0;
+
+        private int m_BorderImgHeight = 0;
+
+        public int BorderImgWidth
+        {
+            get { return m_BorderImgWidth; }
+        }
+
+        public int BorderImgHeight
+        {
+            get { return m_BorderImgHeight; }
+        }
         //private RectangleF m_LonLatBox = new RectangleF();
 
         private RectangleF FixLonLatBox()
@@ -271,24 +289,7 @@ namespace FireMonitor.DataProvider
             return lonlatbox;
         }
 
-        private void CreateGrid()
-        {
 
-        }
-
-
-        //private List<bool> m_BorderPts = new List<bool>();
-
-        //private void GetBorder()
-        //{
-        //    m_lat = ReadLat();
-        //    int size = m_lat.Length;
-
-        //    for (int i = 0; i < size; i++)
-        //    {
-
-        //    }
-        //}
 
 
     }

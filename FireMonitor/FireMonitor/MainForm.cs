@@ -31,15 +31,13 @@ namespace FireMonitor
             this.imgDispCtrl1.DataProvider = provider;
             this.imgDispCtrl1.BorderDataProvider = provider;
             
-            provider.DataChange();
+            provider.OnDataChange();
 
             this.imgDispCtrl1.EnableGdiLayerRender();
+
+            
         }
 
-        void provider_DataChanged(object sender, EventArgs e)
-        {
-            //throw new NotImplementedException();
-        }
         void InitSkinGallery()
         {
             SkinHelper.InitSkinGallery(rgbiSkins, true);

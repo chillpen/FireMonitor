@@ -14,6 +14,9 @@ namespace MapHandle
         List<Point> PolyLinePts { get; }
 
         List<Point> Points { get; }
+
+        int BorderImgWidth { get; }
+        int BorderImgHeight { get; }
     }
 
 }

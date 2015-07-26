@@ -476,7 +476,7 @@
         private DevExpress.Utils.ImageCollection ribbonImageCollectionLarge;
         private System.Windows.Forms.ImageList navbarImageList;
         private System.Windows.Forms.ImageList navbarImageListLarge;
-        private MapHandle.MainControl mainControl1;
+       // private MapHandle.MainControl mainControl1;
         private MapHandle.ImgDispCtrl imgDispCtrl1;
 
     }
