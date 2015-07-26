@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using SharpMap.Layers;
 using SharpMap.Data.Providers;
+using GeoAPI.Geometries;
 
 namespace MapHandle
 {
@@ -72,7 +73,9 @@ namespace MapHandle
         public void EnableGdiLayerRender()
         {
             m_GdiImageLayer.Enabled = true;
-            this.mapBox1.Map.ZoomToExtents();
+            Envelope envelope = new Envelope(0,1,0, this.m_dataProvider.Image.Height);
+            this.mapBox1.Map.ZoomToBox(envelope);
+            //this.mapBox1.Map.ZoomToExtents();
             this.mapBox1.Refresh();
         }
 
