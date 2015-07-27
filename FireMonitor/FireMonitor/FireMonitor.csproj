@@ -131,6 +131,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="FireCal\" />
     <Folder Include="ImageDisplay\" />
   </ItemGroup>
   <ItemGroup>

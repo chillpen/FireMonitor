@@ -39,8 +39,6 @@
             this.iSaveAs = new DevExpress.XtraBars.BarButtonItem();
             this.iExit = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonImageCollection = new DevExpress.Utils.ImageCollection(this.components);
-            this.iClose = new DevExpress.XtraBars.BarButtonItem();
-            this.iFind = new DevExpress.XtraBars.BarButtonItem();
             this.iHelp = new DevExpress.XtraBars.BarButtonItem();
             this.iAbout = new DevExpress.XtraBars.BarButtonItem();
             this.siStatus = new DevExpress.XtraBars.BarStaticItem();
@@ -98,8 +96,6 @@
             this.ribbonControl.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.ribbonControl.ExpandCollapseItem,
             this.iOpen,
-            this.iClose,
-            this.iFind,
             this.iSave,
             this.iSaveAs,
             this.iExit,
@@ -202,28 +198,6 @@
             this.ribbonImageCollection.Images.SetKeyName(12, "Ribbon_AlignLeft_16x16.png");
             this.ribbonImageCollection.Images.SetKeyName(13, "Ribbon_AlignCenter_16x16.png");
             this.ribbonImageCollection.Images.SetKeyName(14, "Ribbon_AlignRight_16x16.png");
-            // 
-            // iClose
-            // 
-            this.iClose.Caption = "&Close";
-            this.iClose.Description = "Closes the active document.";
-            this.iClose.Hint = "Closes the active document";
-            this.iClose.Id = 3;
-            this.iClose.ImageIndex = 2;
-            this.iClose.LargeImageIndex = 2;
-            this.iClose.Name = "iClose";
-            this.iClose.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)((DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
-            // 
-            // iFind
-            // 
-            this.iFind.Caption = "Find";
-            this.iFind.Description = "Searches for the specified info.";
-            this.iFind.Hint = "Searches for the specified info";
-            this.iFind.Id = 15;
-            this.iFind.ImageIndex = 3;
-            this.iFind.LargeImageIndex = 3;
-            this.iFind.Name = "iFind";
-            this.iFind.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)((DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
             // 
             // iHelp
             // 
@@ -364,8 +338,6 @@
             // fileRibbonPageGroup
             // 
             this.fileRibbonPageGroup.ItemLinks.Add(this.iOpen);
-            this.fileRibbonPageGroup.ItemLinks.Add(this.iClose);
-            this.fileRibbonPageGroup.ItemLinks.Add(this.iFind);
             this.fileRibbonPageGroup.ItemLinks.Add(this.iSave);
             this.fileRibbonPageGroup.ItemLinks.Add(this.iSaveAs);
             this.fileRibbonPageGroup.Name = "fileRibbonPageGroup";
@@ -447,8 +419,6 @@
 
         private DevExpress.XtraBars.Ribbon.RibbonControl ribbonControl;
         private DevExpress.XtraBars.BarButtonItem iOpen;
-        private DevExpress.XtraBars.BarButtonItem iClose;
-        private DevExpress.XtraBars.BarButtonItem iFind;
         private DevExpress.XtraBars.BarButtonItem iSave;
         private DevExpress.XtraBars.BarButtonItem iSaveAs;
         private DevExpress.XtraBars.BarButtonItem iExit;

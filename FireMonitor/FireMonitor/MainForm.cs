@@ -60,7 +60,7 @@ namespace FireMonitor
 
         private void iOpen_ItemClick(object sender, ItemClickEventArgs e)
         {
-
+            
         }
 
     }

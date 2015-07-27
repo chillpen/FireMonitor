@@ -23,7 +23,11 @@ namespace FireMonitor.DataProvider
     {
         private HDFOperator m_hdfOperator = new HDFOperator();
 
-        private System.Drawing.Bitmap CreateImageData()//todo:需要重构为属性模式，将生成图像部分提成函数，修改相应的Iprovider
+        /// <summary>
+        /// 创建图像
+        /// </summary>
+        /// <returns></returns>
+        private System.Drawing.Bitmap CreateImageData()
         {
 
             System.Drawing.Bitmap bmp = new System.Drawing.Bitmap(m_EVInfo.col, m_EVInfo.row, PixelFormat.Format24bppRgb);
@@ -47,10 +51,12 @@ namespace FireMonitor.DataProvider
                     for (int j = 0; j < m_EVInfo.col; j++)
                     {
                         int pixelCount = pixel * 3;
-                        byte pixelValue = (byte)(m_EV[1, i, j] * 255 / 1024);
-                        *(p + pixelCount) = pixelValue;		//R
-                        *(p + pixelCount + 1) = pixelValue;	//G
-                        *(p + pixelCount + 2) = pixelValue;	//B
+                        byte pixelValueR = (byte)(m_EV[0, i, j] * 255 / 1024);
+                        byte pixelValueG = (byte)(m_EV[1, i, j] * 255 / 1024);
+                        byte pixelValueB = (byte)(m_EV[6, i, j] * 255 / 1024);
+                        *(p + pixelCount) = pixelValueR;		//R
+                        *(p + pixelCount + 1) = pixelValueG;	//G
+                        *(p + pixelCount + 2) = pixelValueB;	//B
 
                         pixel++;
                     }
@@ -79,7 +85,9 @@ namespace FireMonitor.DataProvider
         }
 
         public event EventHandler ImageDataChangedEvent;
-
+        /// <summary>
+        /// 相应图像数据修改
+        /// </summary>
         public void OnDataChange()
         {
             if (this.ImageDataChangedEvent != null)
@@ -161,7 +169,10 @@ namespace FireMonitor.DataProvider
         {
             set { m_provinceShpFile = value; }
         }
-
+        /// <summary>
+        /// 创建边界
+        /// </summary>
+        /// <returns></returns>
         private bool CreateBorder()
         {
             ShpOperator shpOper = new ShpOperator();

@@ -25,6 +25,8 @@ namespace MapHandle
             this.mapBox1.Map.Layers.Add(m_GdiImageLayer);
 
             this.mapBox1.MouseClick += new MouseEventHandler(mapBox1_MouseClick);
+
+            this.mapBox1.ActiveTool = SharpMap.Forms.MapBox.Tools.Pan;
             
         }
 
