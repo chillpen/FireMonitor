@@ -124,8 +124,8 @@ namespace FireMonitor.HDFOper
         public AttributeValue GetAttribute(string attributeName)
         {
 
-            //return m_attributeOper.GetAttribute(m_fileId, attributeName);
-            return m_attributeOper.GetAttribute(m_AttribXmlData, attributeName, m_fileId);
+            return m_attributeOper.GetAttribute(m_fileId, attributeName);
+           // return m_attributeOper.GetAttribute(m_AttribXmlData, attributeName, m_fileId);
 
         }
 

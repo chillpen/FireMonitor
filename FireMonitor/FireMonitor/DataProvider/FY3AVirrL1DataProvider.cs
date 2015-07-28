@@ -82,6 +82,7 @@ namespace FireMonitor.DataProvider
             m_lon = ReadLon();
             m_lat = ReadLat();
             m_EV = ReadEV();
+            m_calcoef = ReadCalcoefAttr();
         }
 
         public event EventHandler ImageDataChangedEvent;
@@ -150,6 +151,11 @@ namespace FireMonitor.DataProvider
             return datasetFloat;
         }
 
+        private AttributeValue m_calcoef =  new AttributeValue();
+        private AttributeValue ReadCalcoefAttr()
+        {
+            return m_hdfOperator.GetAttribute("RefSB_Cal_Coefficients");
+        }
 
         private List<Point[]> m_PolygonPts = new List<Point[]>();
 

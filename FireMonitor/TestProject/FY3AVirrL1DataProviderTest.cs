@@ -7,6 +7,8 @@ using SharpMap.Forms;
 using System.Windows.Forms;
 using SharpMap.Layers;
 using SharpMap;
+using FireMonitor.HDFOper;
+
 namespace TestProject
 {
 
@@ -186,6 +188,23 @@ namespace TestProject
 
             Assert.AreEqual(expected, actual);
             Assert.Inconclusive("验证此测试方法的正确性。");
+        }
+
+        /// <summary>
+        ///ReadCalcoefAttr 的测试
+        ///</summary>
+        [TestMethod()]
+        [DeploymentItem("FireMonitor.exe")]
+        public void ReadCalcoefAttrTest()
+        {
+            FY3AVirrL1DataProvider_Accessor provider = new FY3AVirrL1DataProvider_Accessor(); // TODO: 初始化为适当的值
+            PrivateObject param0 = new PrivateObject(provider); // TODO: 初始化为适当的值
+            FY3AVirrL1DataProvider_Accessor target = new FY3AVirrL1DataProvider_Accessor(param0); // TODO: 初始化为适当的值
+            target.L1File = TestDataDir + "\\FY3A_VIRRX_GBAL_L1_20090427_0255_1000M_MS.HDF";
+            AttributeValue actual;
+            actual = target.ReadCalcoefAttr();
+           // Assert.AreEqual(expected, actual);
+           // Assert.Inconclusive("验证此测试方法的正确性。");
         }
     }
 }

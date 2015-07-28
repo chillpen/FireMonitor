@@ -21,132 +21,132 @@ namespace FireMonitor.HDFOper
     public class HdfAttributeOperator
     {
 
-        //public AttributeValue GetAttribute(H5FileId fileId, string attributeName)
-        //{
-        //    H5AttributeId attributeId = H5A.openName(fileId, attributeName);    //根据属性名称得到属性Id
+        public AttributeValue GetAttribute(H5FileId fileId, string attributeName)
+        {
+            H5AttributeId attributeId = H5A.openName(fileId, attributeName);    //根据属性名称得到属性Id
 
-        //    H5DataTypeId attributeType = H5A.getType(attributeId);            //得到属性数据类型
+            H5DataTypeId attributeType = H5A.getType(attributeId);            //得到属性数据类型
 
-        //    int size = H5T.getSize(attributeType);
+            int size = H5T.getSize(attributeType);
 
-        //    H5T.H5TClass typeClass = H5T.getClass(attributeType);
+            H5T.H5TClass typeClass = H5T.getClass(attributeType);
 
-        //    H5DataSpaceId spaceId = H5A.getSpace(attributeId);
-        //    long[] dims = H5S.getSimpleExtentDims(spaceId);
-        //    int rank = H5S.getSimpleExtentNDims(spaceId);
+            H5DataSpaceId spaceId = H5A.getSpace(attributeId);
+            long[] dims = H5S.getSimpleExtentDims(spaceId);
+            int rank = H5S.getSimpleExtentNDims(spaceId);
 
-        //    H5T.H5Type h5type;
+            H5T.H5Type h5type;
 
-        //    Type dataType = null;
+            Type dataType = null;
 
-        //    AttributeValue atrributeData = new AttributeValue();
-        //    atrributeData.dataValue = null;
-        //    atrributeData.valueType = DataValueType.EMPTY;
-        //    atrributeData.rank = rank;
+            AttributeValue atrributeData = new AttributeValue();
+            atrributeData.dataValue = null;
+            atrributeData.valueType = DataValueType.EMPTY;
+            atrributeData.rank = rank;
 
-        //    switch (typeClass)
-        //    {
-        //        case H5T.H5TClass.FLOAT:
-        //            h5type = H5T.H5Type.NATIVE_FLOAT;
+            switch (typeClass)
+            {
+                case H5T.H5TClass.FLOAT:
+                    h5type = H5T.H5Type.NATIVE_FLOAT;
 
-        //            if (rank == 1)
-        //            {
-        //                float[] floatDatatmp = new float[dims[0]];
-        //                H5A.read(attributeId, new H5DataTypeId(h5type), new H5Array<float>(floatDatatmp));
-        //                atrributeData.dataValue = floatDatatmp;
+                    if (rank == 1)
+                    {
+                        float[] floatDatatmp = new float[dims[0]];
+                        H5A.read(attributeId, new H5DataTypeId(h5type), new H5Array<float>(floatDatatmp));
+                        atrributeData.dataValue = floatDatatmp;
 
-        //            }
-        //            else if (rank == 2)
-        //            {
-        //                float[,] floatDatatmp = new float[dims[0], dims[1]];
-        //                H5A.read(attributeId, new H5DataTypeId(h5type), new H5Array<float>(floatDatatmp));
-        //                atrributeData.dataValue = floatDatatmp;
+                    }
+                    else if (rank == 2)
+                    {
+                        float[,] floatDatatmp = new float[dims[0], dims[1]];
+                        H5A.read(attributeId, new H5DataTypeId(h5type), new H5Array<float>(floatDatatmp));
+                        atrributeData.dataValue = floatDatatmp;
 
-        //            }
+                    }
 
-        //            atrributeData.valueType = DataValueType.FLOAT;
+                    atrributeData.valueType = DataValueType.FLOAT;
 
-        //            break;
-        //        case H5T.H5TClass.INTEGER:
-        //            h5type = H5T.H5Type.NATIVE_INT;
-        //            // int[,] intDatatmp = null;
-        //            if (rank == 1)
-        //            {
-        //                int[] intDatatmp = new int[dims[0]];
-        //                H5A.read(attributeId, new H5DataTypeId(h5type), new H5Array<int>(intDatatmp));
+                    break;
+                case H5T.H5TClass.INTEGER:
+                    h5type = H5T.H5Type.NATIVE_INT;
+                    // int[,] intDatatmp = null;
+                    if (rank == 1)
+                    {
+                        int[] intDatatmp = new int[dims[0]];
+                        H5A.read(attributeId, new H5DataTypeId(h5type), new H5Array<int>(intDatatmp));
 
-        //                atrributeData.dataValue = intDatatmp;
+                        atrributeData.dataValue = intDatatmp;
 
-        //            }
-        //            else if (rank == 2)
-        //            {
-        //                int[,] intDatatmp = new int[dims[0], dims[1]];
-        //                H5A.read(attributeId, new H5DataTypeId(h5type), new H5Array<int>(intDatatmp));
+                    }
+                    else if (rank == 2)
+                    {
+                        int[,] intDatatmp = new int[dims[0], dims[1]];
+                        H5A.read(attributeId, new H5DataTypeId(h5type), new H5Array<int>(intDatatmp));
 
-        //                atrributeData.dataValue = intDatatmp;
-        //            }
+                        atrributeData.dataValue = intDatatmp;
+                    }
 
-        //            atrributeData.valueType = DataValueType.INT;
+                    atrributeData.valueType = DataValueType.INT;
 
-        //            break;
-        //        case H5T.H5TClass.STRING:
-        //            h5type = H5T.H5Type.C_S1;
+                    break;
+                case H5T.H5TClass.STRING:
+                    h5type = H5T.H5Type.C_S1;
 
-        //            if (rank == 0)
-        //            {
-        //                string[] stringDatatmp = new string[1];
-        //                byte[] bytedata = new byte[255];
+                    if (rank == 0)
+                    {
+                        string[] stringDatatmp = new string[1];
+                        byte[] bytedata = new byte[255];
 
-        //                H5A.read(attributeId, attributeType, new H5Array<byte>(bytedata));
-        //                //H5A.read(attributeId, new H5DataTypeId(h5type), new H5Array<string>(stringDatatmp));
-        //                stringDatatmp[0] = Encoding.Default.GetString(bytedata).Trim('\0');
-        //                atrributeData.dataValue = stringDatatmp;
-        //            }
-        //            else if (rank == 1)
-        //            {
-        //                string[] stringDatatmp = new string[dims[0]];
-        //                // string stringDatatmp = "";
-        //                // byte[] bytedata = new byte[255];
-        //                // byte[,] bytedata = new byte[2,255];
+                        H5A.read(attributeId, attributeType, new H5Array<byte>(bytedata));
+                        //H5A.read(attributeId, new H5DataTypeId(h5type), new H5Array<string>(stringDatatmp));
+                        stringDatatmp[0] = Encoding.Default.GetString(bytedata).Trim('\0');
+                        atrributeData.dataValue = stringDatatmp;
+                    }
+                    else if (rank == 1)
+                    {
+                        string[] stringDatatmp = new string[dims[0]];
+                        // string stringDatatmp = "";
+                        // byte[] bytedata = new byte[255];
+                        // byte[,] bytedata = new byte[2,255];
 
-        //                // H5DataTypeId memtype = H5T.copy(H5T.H5Type.C_S1);
-        //                //H5T.setVariableSize(memtype);
-        //                //H5T.setSize(attributeType, size);
-        //                // H5A.read(attributeId, memtype, new H5Array<string>(stringDatatmp));
+                        // H5DataTypeId memtype = H5T.copy(H5T.H5Type.C_S1);
+                        //H5T.setVariableSize(memtype);
+                        //H5T.setSize(attributeType, size);
+                        // H5A.read(attributeId, memtype, new H5Array<string>(stringDatatmp));
 
-        //                // H5A.read(attributeId, new H5DataTypeId(h5type), new H5Array<string>(stringDatatmp));
+                        // H5A.read(attributeId, new H5DataTypeId(h5type), new H5Array<string>(stringDatatmp));
 
-        //                // stringDatatmp[0] = Encoding.Default.GetString(bytedata).Trim('\0');
-        //                //string test = Encoding.Default.GetString(bytedata).Trim('\0');
-        //                // atrributeData.dataValue = stringDatatmp;
-        //                //  VariableLengthString[] value = new VariableLengthString[1]; 
-        //                atrributeData.dataValue = stringDatatmp;
-        //            }
-        //            else if (rank == 2)
-        //            {
-        //                string[,] stringDatatmp = new string[dims[0], dims[1]];
-        //                //H5DataTypeId memtype = H5T.copy(H5T.H5Type.C_S1);
-        //                //H5T.setVariableSize(memtype);
-        //                //H5A.read(attributeId, memtype, new H5Array<string>(stringDatatmp));
-        //                atrributeData.dataValue = stringDatatmp;
+                        // stringDatatmp[0] = Encoding.Default.GetString(bytedata).Trim('\0');
+                        //string test = Encoding.Default.GetString(bytedata).Trim('\0');
+                        // atrributeData.dataValue = stringDatatmp;
+                        //  VariableLengthString[] value = new VariableLengthString[1]; 
+                        atrributeData.dataValue = stringDatatmp;
+                    }
+                    else if (rank == 2)
+                    {
+                        string[,] stringDatatmp = new string[dims[0], dims[1]];
+                        //H5DataTypeId memtype = H5T.copy(H5T.H5Type.C_S1);
+                        //H5T.setVariableSize(memtype);
+                        //H5A.read(attributeId, memtype, new H5Array<string>(stringDatatmp));
+                        atrributeData.dataValue = stringDatatmp;
 
-        //            }
+                    }
 
-        //            atrributeData.valueType = DataValueType.STRING;
+                    atrributeData.valueType = DataValueType.STRING;
 
-        //            break;
-        //        default:
-        //            h5type = H5T.H5Type.C_S1;
-        //            break;
-        //    }
+                    break;
+                default:
+                    h5type = H5T.H5Type.C_S1;
+                    break;
+            }
 
-        //    H5T.close(attributeType);
-        //    H5S.close(spaceId);
-        //    H5A.close(attributeId);
-        //    return atrributeData;
+            H5T.close(attributeType);
+            H5S.close(spaceId);
+            H5A.close(attributeId);
+            return atrributeData;
 
 
-        //}
+        }
 
         ValidationEventHandler eventHandler = new ValidationEventHandler(settings_ValidationEventHandler);
 
