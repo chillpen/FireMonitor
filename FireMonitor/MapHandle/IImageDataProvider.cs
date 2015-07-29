@@ -13,6 +13,6 @@ namespace MapHandle
 
         event EventHandler ImageDataChangedEvent;
 
-        void OnDataChange();
+        void Update();
     }
 }

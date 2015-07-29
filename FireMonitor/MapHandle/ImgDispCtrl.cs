@@ -45,7 +45,7 @@ namespace MapHandle
             //set { m_MapBox = value; }
         }
 
-        public IImageDataProvider DataProvider
+        public IImageDataProvider ImageDataProvider
         {
             set
             {

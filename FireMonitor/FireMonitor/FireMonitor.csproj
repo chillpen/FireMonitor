@@ -74,7 +74,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataProvider\FY3AVirrL1DataProvider.cs" />
+    <Compile Include="Data\FY3AVirr\FY3AVirrBorderDataProvider.cs" />
+    <Compile Include="Data\FY3AVirr\FY3AVirrImgDataProvider.cs" />
+    <Compile Include="Data\FY3AVirr\FY3AVirrL1DataFile.cs" />
+    <Compile Include="Data\FY3AVirr\FY3AVirrDataCreator.cs" />
+    <Compile Include="Data\IDataCreator.cs" />
+    <Compile Include="Data\IDataFile.cs" />
     <Compile Include="HDFOperator\HdfAttributeOperator.cs" />
     <Compile Include="HDFOperator\HDFDatasetOperator.cs" />
     <Compile Include="HDFOperator\HDFOperator.cs" />

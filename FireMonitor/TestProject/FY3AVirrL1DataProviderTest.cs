@@ -1,4 +1,4 @@
-﻿using FireMonitor.DataProvider;
+﻿using FireMonitor.Data;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Drawing;
@@ -77,7 +77,7 @@ namespace TestProject
         [TestMethod()]
         public void FY3AVirrL1DataProviderConstructorTest()
         {
-            FY3AVirrL1DataProvider target = new FY3AVirrL1DataProvider();
+            FY3AVirrDataCreator target = new FY3AVirrDataCreator();
             // Assert.Inconclusive("TODO: 实现用来验证目标的代码");
         }
 
@@ -89,7 +89,7 @@ namespace TestProject
         public void GetDataTest()
         {
 
-            FY3AVirrL1DataProvider provider = new FY3AVirrL1DataProvider();
+            FY3AVirrDataCreator provider = new FY3AVirrDataCreator();
             PrivateObject param0 = new PrivateObject(provider); // TODO: 初始化为适当的值
             FY3AVirrL1DataProvider_Accessor target = new FY3AVirrL1DataProvider_Accessor(param0); // TODO: 初始化为适当的值
 
@@ -113,7 +113,7 @@ namespace TestProject
         [TestMethod()]
         public void FileTest()
         {
-            FY3AVirrL1DataProvider target = new FY3AVirrL1DataProvider(); // TODO: 初始化为适当的值
+            FY3AVirrDataCreator target = new FY3AVirrDataCreator(); // TODO: 初始化为适当的值
             string expected = string.Empty; // TODO: 初始化为适当的值
             target.L1File = expected;
             Assert.Inconclusive("无法验证只写属性。");
@@ -128,7 +128,7 @@ namespace TestProject
         {
 
 
-            FY3AVirrL1DataProvider provider = new FY3AVirrL1DataProvider();
+            FY3AVirrDataCreator provider = new FY3AVirrDataCreator();
             PrivateObject param0 = new PrivateObject(provider); // TODO: 初始化为适当的值
             FY3AVirrL1DataProvider_Accessor target = new FY3AVirrL1DataProvider_Accessor(param0); // TODO: 初始化为适当的值
             target.L1File =TestDataDir+"\\FY3A_VIRRX_GBAL_L1_20090427_0255_1000M_MS.HDF";
