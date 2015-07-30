@@ -80,6 +80,7 @@
     <Compile Include="Data\FY3AVirr\FY3AVirrDataCreator.cs" />
     <Compile Include="Data\IDataCreator.cs" />
     <Compile Include="Data\IDataFile.cs" />
+    <Compile Include="FirePoints\FirePointsCalculate.cs" />
     <Compile Include="HDFOperator\HdfAttributeOperator.cs" />
     <Compile Include="HDFOperator\HDFDatasetOperator.cs" />
     <Compile Include="HDFOperator\HDFOperator.cs" />
@@ -136,7 +137,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="FireCal\" />
     <Folder Include="ImageDisplay\" />
   </ItemGroup>
   <ItemGroup>

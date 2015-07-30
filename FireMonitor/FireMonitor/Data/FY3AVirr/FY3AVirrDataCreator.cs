@@ -9,6 +9,7 @@ using System.Drawing.Imaging;
 using System.Drawing;
 using FireMonitor.SHPOperator;
 using System.Windows.Forms;
+using FireMonitor.FirePoints;
 
 namespace FireMonitor.Data
 {
@@ -32,7 +33,9 @@ namespace FireMonitor.Data
 
         private FY3AVirrL1DataFile m_L1Datafile = new FY3AVirrL1DataFile();
 
+        private FirePointsCalculate m_firePtsCal = new FirePointsCalculate();
 
+        
         private IImageDataProvider m_ImgDataProvider = null;
 
         public IImageDataProvider ImageDataProvider
