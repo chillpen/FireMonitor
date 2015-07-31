@@ -11,6 +11,7 @@ namespace MapHandle
         public System.Drawing.Color GetColor(int value)
         {
             System.Drawing.Color color;
+            
             int min = 0;
             int max = 65535;
 
